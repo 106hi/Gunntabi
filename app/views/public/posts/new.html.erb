@@ -19,12 +19,12 @@
   </tr>
   <tr>
     <th><%= f.label "エリア" %></th>
-    <td>プルダウン</td>
+    <td><%= f.select :area, ["中毛エリア", "西毛エリア", "東毛エリア", "北毛エリア"], include_blank: "選択してください" %></td>
   </tr>
   <tr>
     <th><%= f.label "公開設定" %></th>
     <td>公開　非公開</td>
   </tr>
 </table>
-<%= f.submit %>
+<%= f.submit "投稿", class: 'btn btn-success' %>
 <% end %>
