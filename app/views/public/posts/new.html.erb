@@ -1,0 +1,30 @@
+<h3>新規投稿</h3>
+<%= form_with model: @post do |f| %>
+<table>
+  <tr>
+    <th><%= f.label "画像" %></th>
+    <td><%= f.file_field :image, accept: "image/*" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label "スポット名" %></th>
+    <td><%= f.text_field :post_name %></td>
+  </tr>
+  <tr>
+    <th><%= f.label "おすすめポイント" %></th>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+  <tr>
+    <th><%= f.label "住所" %></th>
+    <td><%= f.text_field :address %></td>
+  </tr>
+  <tr>
+    <th><%= f.label "エリア" %></th>
+    <td>プルダウン</td>
+  </tr>
+  <tr>
+    <th><%= f.label "公開設定" %></th>
+    <td>公開　非公開</td>
+  </tr>
+</table>
+<%= f.submit %>
+<% end %>
