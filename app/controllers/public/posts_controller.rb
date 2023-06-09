@@ -5,9 +5,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    # post = Post.find(params[:id])
-    # customer = post.customer
-    # @nickname = customer.nickname
   end
 
   def show
