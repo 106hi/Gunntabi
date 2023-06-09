@@ -10,14 +10,17 @@
       <th></th>
     </tr>
   </thead>
+  <% @posts.each do |post| %>
   <tbody>
     <tr>
-      <td>image</td>
-      <td>スポット</td>
-      <td>人</td>
-      <td>日付</td>
+      <!--複数画像の１枚目だけ表示-->
+      <td><%= image_tag post.get_image[0] %></td>
+      <td><%= post.post_name %></td>
+      <td><%#= post.@nickname %></td>
+      <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
       <td>いいね</td>
       <td>コメント</td>
     </tr>
   </tbody>
+  <% end %>
 </table>

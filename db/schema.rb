@@ -58,6 +58,11 @@ ActiveRecord::Schema.define(version: 2023_06_09_132448) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "nickname", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -65,12 +70,13 @@ ActiveRecord::Schema.define(version: 2023_06_09_132448) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "customer_id", null: false
     t.string "post_name", default: "", null: false
     t.text "introduction", default: "", null: false
     t.string "address", default: "", null: false
     t.float "latitude"
     t.float "longitude"
-    t.boolean "release_status", default: false, null: false
+    t.boolean "is_release", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "area"
