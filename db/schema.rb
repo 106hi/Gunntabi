@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2023_06_09_132448) do
     t.string "last_name", default: "", null: false
     t.string "nickname", default: "", null: false
     t.string "phone_number", default: "", null: false
+    t.text "profile", default: "", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

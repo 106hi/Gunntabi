@@ -1,0 +1,5 @@
+<% if @customer == current_customer %>
+  <h3>マイページ</h3>
+<% else %>
+  <h3><%= @customer.nickname %>さんのページ</h3>
+<% end %>
