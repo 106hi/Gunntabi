@@ -15,7 +15,11 @@
     <tr>
       <!--複数画像の１枚目だけ表示-->
       <td><%= image_tag post.get_image[0], size: "150x150" %></td>
-      <td><%= post.post_name %></td>
+      <td>
+        <%= link_to post_path(post.id) do %>
+          <%= post.post_name %>
+        <% end %>
+      </td>
       <td><%= post.customer.nickname %></td>
       <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
       <td>いいね</td>
