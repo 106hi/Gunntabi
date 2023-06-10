@@ -13,6 +13,12 @@
     <tr>
       <th><%= @post.post_name %></th>
       <th>いいね</th>
+      <th>
+        <% if @post.customer == current_customer %>
+          <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success' %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: 'btn btn-danger' %>
+        <% end %>
+      </th>
     </tr>
   </thead>
   <tbody class="table">
