@@ -7,6 +7,12 @@
   <tr>
     <td><%= image_tag @customer.get_image, size: "100x100" %></td>
     <td><%= text_area_tag @customer.profile, "プロフィール", size: "40x5" %></td>
-    <td valign="bottom" class="pb-2"><%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary' %></td>
+    <td valign="bottom" class="pb-2">
+      <% if @customer == current_customer %>
+        <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary' %>
+      <% end %>
+    </td>
   </tr>
 </table>
+<h4>投稿</h4>
+<div>投稿数：<%= @posts.count %></div>
