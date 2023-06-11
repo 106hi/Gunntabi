@@ -3,7 +3,10 @@ class Post < ApplicationRecord
   belongs_to :customer
 
   def get_image
-    image.attached?
-    image
+    if image.attached?
+      image
+    else
+      'no_image_scenery_gray.jpeg'
+    end
   end
 end

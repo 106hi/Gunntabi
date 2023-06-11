@@ -3,3 +3,10 @@
 <% else %>
   <h3><%= @customer.nickname %>さんのページ</h3>
 <% end %>
+<table>
+  <tr>
+    <td><%= image_tag @customer.get_image, size: "100x100" %></td>
+    <td><%= text_area_tag @customer.profile, "プロフィール", size: "40x5" %></td>
+    <td valign="bottom" class="pb-2"><%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary' %></td>
+  </tr>
+</table>
