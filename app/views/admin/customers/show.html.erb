@@ -30,7 +30,7 @@
         <th>投稿数<%= @post.count %>件</th>
       </tr>
     </thead>
-    <%= @post.each do |post| %>
+    <% @post.each do |post| %>
     <tbody>
       <tr>
         <td><%= image_tag post.get_image[0], size: "150x150" %></td>
