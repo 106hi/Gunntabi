@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'posts/show'
+  end
+  namespace :admin do
     get 'customers/show'
     get 'customers/edit'
   end
