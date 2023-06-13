@@ -1,6 +1,62 @@
 <h1>ぐん旅</h1>
-<li class="nav-item">
-  <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
-    <i class="fas fa-sign-out-alt"></i> ログアウト
+<ul class="navbar-nav">
+  <% if customer_signed_in? %>
+    <li class="nav-item">
+      <%= link_to customer_path(current_customer.id), class: 'nav-link text-dark' do %>
+        <i class="fas fa-user-circle"></i>　マイページ
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_post_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-edit"></i>　投稿
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to posts_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-images"></i>　投稿一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%#= link_to , class: 'nav-link text-dark' do %>
+        <i class="fas fa-hand-holding-heart"></i>　いいね一覧
+      <%# end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+        <i class="fas fa-sign-out-alt"></i>　ログアウト
+      <% end %>
+    </li>
+  <% elsif admin_signed_in? %>
+    <li class="nav-item">
+      <%= link_to admin_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-users"></i>　会員一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%#= link_to , class: 'nav-link text-dark' do %>
+        <i class="fas fa-comments"></i>　コメント管理
+      <%# end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+        <i class="fas fa-sign-out-alt"></i>　ログアウト
+      <% end %>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to posts_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-images"></i>　投稿一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-user-plus"></i>　新規登録
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+        <i class="fas fa-sign-in-alt"></i>　ログイン
+      <% end %>
+    </li>
   <% end %>
-</li>
+</ul>
