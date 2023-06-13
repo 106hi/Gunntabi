@@ -1,5 +1,5 @@
 <h3>会員一覧</h3>
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>会員ID</th>
@@ -8,9 +8,14 @@
       <th>ステータス</th>
     </tr>
   </thead>
+  <% @customers.each do |customer| %>
   <tbody>
     <tr>
-      <td></td>
+      <td><%= customer.id %></td>
+      <td><%= customer.nickname %></td>
+      <td><%= customer.posts.count %></td>
+      <td><%= customer.is_deleted %></td>
     </tr>
   </tbody>
+  <% end %>
 </table>
