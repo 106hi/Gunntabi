@@ -1,0 +1,44 @@
+<h3><%= @customer.nickname %>さんの詳細</h3>
+<%= link_to "会員情報を編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success' %>
+  <table class="table table-bordered">
+    <tr>
+      <th>会員ID</th>
+      <td><%= @customer.id %></td>
+      <th>電話番号</th>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <th>名前</th>
+      <td><%= @customer.full_name %></td>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= @customer.nickname %></td>
+      <th>会員ステータス</th>
+      <td><%= @customer.is_deleted %></td>
+    </tr>
+  </table>
+ <h5>投稿</h5>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>スポット</th>
+        <th colspan="2"></th>
+        <th>投稿数<%= @post.count %>件</th>
+      </tr>
+    </thead>
+    <%= @post.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= image_tag post.get_image[0], size: "150x150" %></td>
+        <td><%= post.post_name %></td>
+        <td>いいね</td>
+        <td>コメント</td>
+        <td><%= link_to "投稿詳細", admin_post_path(post.id), class: 'btn btn-success' %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
