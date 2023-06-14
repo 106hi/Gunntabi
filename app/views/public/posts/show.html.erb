@@ -12,8 +12,8 @@
   <thead>
     <tr>
       <th><%= @post.post_name %></th>
-      <th class="favorite-btn">
-        <%= render "favorites/favorite-btn", post: @post %>
+      <th id="favorite-btn<%= @post.id %>">
+        <%= render "public/favorites/favorite-btn", post: @post %>
       </th>
       <th>
         <% if @post.customer == current_customer %>
