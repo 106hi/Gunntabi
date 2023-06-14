@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :posts, only: %i[new index show edit create destroy update] do
       resource :favorites, only: %i[create destroy]
-      resource :post_comments, only: %i[create destroy]
+      resources :post_comments, only: %i[create destroy]
     end
     resources :customers, only: %i[show edit update] do
       member do
