@@ -1,0 +1,13 @@
+<div>
+  <%= form_with model: [post, post_comment], remote: true do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
+<div>
+  <% post.post_comments.each do |post_comment| %>
+    <p><%= image_tag post_comment.customer.get_image, size: "100x100" %></p>
+    <%= post_comment.customer.nickname %>
+    <%= post_comment.comment %>
+  <% end %>
+</div>
