@@ -27,7 +27,7 @@
       </td>
       <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
       <td class="favorite-btn">
-        <%= render "favorites/favorite-btn", post: post %>
+        <%= render "favorites/favorite-btn", post: @post %>
       </td>
       <td>コメント</td>
     </tr>
