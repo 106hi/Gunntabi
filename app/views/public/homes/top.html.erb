@@ -1,5 +1,31 @@
-<h1>Topページ</h1>
-<div class="box">
-  <img src="assets/gunnma_green.png" class="d-inline-blick position-relative">
-  <p class="position-absolute">北毛地域</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7 mb-2">
+      <div class="box">
+        <img src="assets/gunnma_green.png">
+        <p class="north_area">北毛エリア</p>
+        <p class="central_area">中毛エリア</p>
+        <p class="west_area">西毛エリア</p>
+        <p class="east_area">東毛エリア</p>
+      </div>
+      <div>北毛エリア：利根郡、吾妻郡、沼田市</div>
+      <div>中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡</div>
+      <div>西毛エリア：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡</div>
+      <div>東毛エリア：桐生市、太田市、館林市、みどり市、邑楽郡</div>
+    </div>
+    <div class="col-lg-5">
+      <h4>新しい投稿</h4>
+      <% @posts.each do |post| %>
+      <table class="table">
+        <tr>
+          <td rowspan="2"><%= image_tag post.get_image[0], size: "100x100" %></td>
+          <td><%= post.post_name %></td>
+        </tr>
+        <tr>
+          <td>投稿者：<%= post.customer.nickname %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
 </div>
