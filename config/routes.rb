@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    resources :posts, only: %i[new index show edit create destroy update]
+    resources :posts, only: %i[new index show edit create destroy update] do
+      resource :favorites, only: %i[create destroy]
+    end
     resources :customers, only: %i[show edit update]
   end
 
