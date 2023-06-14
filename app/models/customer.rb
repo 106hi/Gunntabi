@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_one_attached :image
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def get_image
     unless image.attached?
@@ -14,7 +15,7 @@ class Customer < ApplicationRecord
     end
     image
   end
-  
+
   def full_name
     "#{last_name} #{first_name}"
   end
