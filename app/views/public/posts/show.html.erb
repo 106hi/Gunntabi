@@ -12,7 +12,9 @@
   <thead>
     <tr>
       <th><%= @post.post_name %></th>
-      <th>いいね</th>
+      <th class="favorite-btn">
+        <%= render "favorites/favorite-btn", post: @post %>
+      </th>
       <th>
         <% if @post.customer == current_customer %>
           <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success' %>
