@@ -1,0 +1,24 @@
+<h3>いいね一覧</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>スポット</th>
+      <th>投稿者</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <% @favorite_posts.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= image_tag post.get_image[0], size: "100x100" %></td>
+        <td><%= post.post_name %></td>
+        <td><%= post.customer.nickname %></td>
+        <td id="favorite-btn<%= post.id %>">
+          <%= render "public/favorites/favorite-btn", post: post %>
+        </td>
+        <td>コメント</td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
