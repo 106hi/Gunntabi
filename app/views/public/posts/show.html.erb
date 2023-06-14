@@ -31,6 +31,9 @@
     <td><%= @post.introduction %></td>
   </tbody>
 </table>
-<div id="post-comment">
-  <%= render "public/post_comments/comment", post: @post, post_comment: @post_comment %>
+<div>
+  <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+</div>
+<div class="post-comments">
+  <%= render "public/post_comments/comment", post: @post %>
 </div>
