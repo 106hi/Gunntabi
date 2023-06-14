@@ -23,7 +23,11 @@ Rails.application.routes.draw do
       resource :favorites, only: %i[create destroy]
       resource :post_comments, only: %i[create destroy]
     end
-    resources :customers, only: %i[show edit update]
+    resources :customers, only: %i[show edit update] do
+      member do
+        get :favorites
+      end
+    end
   end
 
   namespace :admin do
