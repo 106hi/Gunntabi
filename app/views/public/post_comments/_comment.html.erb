@@ -1,10 +1,18 @@
 <% post.post_comments.each do |post_comment| %>
-  <p><%= image_tag post_comment.customer.get_image, size: "100x100" %></p>
-  <p><%= post_comment.customer.nickname %></p>
-  <p><%= post_comment.comment %></p>
-  <% if post_comment.customer == current_customer %>
-    <button class="btn btn-danger btn-sm mb-4" type="button">
-      <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment), method: :delete, class: 'text-light', remote: true %>
-    </button>
-  <% end %>
+  <table>
+    <tr>
+      <td><%= image_tag post_comment.customer.get_image, size: "100x100" %></td>
+      <td rowspan="2"><%= text_area_tag post_comment.comment, post_comment.comment, size: "30x5" %></td>
+      <td rowspan="2">
+        <% if post_comment.customer == current_customer || admin_signed_in? %>
+          <button class="btn btn-danger btn-sm mb-4" type="button">
+            <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment), method: :delete, remote: true, data: {confirm: "このコメントを削除しますか？"}, class: 'text-light' %>
+          </button>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= post_comment.customer.nickname %></td>
+    </tr>
+  </table>
 <% end %>
