@@ -17,7 +17,7 @@
         <td id="favorite-btn<%= post.id %>">
           <%= render "public/favorites/favorite-btn", post: post %>
         </td>
-        <td>コメント</td>
+        <td><%= render "public/post_comments/counter", post: post %></td>
       </tr>
     </tbody>
   <% end %>
