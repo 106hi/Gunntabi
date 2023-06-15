@@ -1,18 +1,7 @@
 <h3>投稿詳細</h3>
 <h4><%= @post.post_name %></h4>
 <div><%= @customer.nickname %></div>
-<h5>コメント数 <%= @posts.count %>件</h5>
-<table class="table">
-  <thead>
-    <tr>
-      <th>コメント投稿者</th>
-      <th>コメント</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<h5><%= render "public/post_comments/counter", post: @post %></h5>
+<div class="post-comments">
+  <%= render "public/post_comments/comment", post: @post %>
+</div>
