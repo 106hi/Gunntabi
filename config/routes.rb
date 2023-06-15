@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'post_comments/index'
+  end
+  namespace :admin do
     get 'posts/show'
   end
   namespace :admin do
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     resources :customers, only: %i[show edit]
     resources :posts, only: %i[show]
+    resources :post_comments, only: %i[index destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
