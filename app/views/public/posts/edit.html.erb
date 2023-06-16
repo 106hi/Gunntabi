@@ -14,6 +14,12 @@
     <td><%= f.text_area :introduction %></td>
   </tr>
   <tr>
+    <th><%= f.label "タグ" %></th>
+    <!--value: @tag_listでフォームに元の情報を入れて出力-->
+    <td><%= f.text_field :tag_name, value: @tag_list, class: "form-control" %></td>
+    <td>※「,（カンマ）」を入れることでタグを複数作成できます。</td>
+  </tr>
+  <tr>
     <th><%= f.label :住所 %></th>
     <td><%= f.text_field :address %></td>
   </tr>
