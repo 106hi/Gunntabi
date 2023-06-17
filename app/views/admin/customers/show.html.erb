@@ -27,16 +27,16 @@
         <th></th>
         <th>スポット</th>
         <th colspan="2"></th>
-        <th>投稿数<%= @post.count %>件</th>
+        <th>投稿数<%= @posts.count %>件</th>
       </tr>
     </thead>
-    <% @post.each do |post| %>
+    <% @posts.each do |post| %>
     <tbody>
       <tr>
         <td><%= image_tag post.get_image[0], size: "150x150" %></td>
         <td><%= post.post_name %></td>
-        <td>いいね</td>
-        <td>コメント</td>
+        <td><i class="fas fa-heart" style="color: #000;"> <%= post.favorites.count %></i></td>
+        <td><%= render "public/post_comments/counter", post: post %></td>
         <td><%= link_to "投稿詳細", admin_post_path(post.id), class: 'btn btn-success' %></td>
       </tr>
     </tbody>
