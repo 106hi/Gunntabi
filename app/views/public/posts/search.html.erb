@@ -7,5 +7,5 @@
 <%= "#{@tag.tag_name}" %>
 <br>
 <% @posts.each do |post| %>
-  <%= link_to post.content, post %>
+  <%= link_to post.post_name, post %>
 <% end %>
