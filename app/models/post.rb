@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
+  enum area: {"---":0, north_area:1, central_area:2, west_area:3, east_area:4}
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_scenery_gray.jpeg')
