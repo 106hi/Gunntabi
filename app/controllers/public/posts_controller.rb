@@ -5,7 +5,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params['area'] # if params['area'] がある場合
+      @posts = Post.where(area: params['area'])
+    else # ないばあい
+      @posts = Post.all
+    end
     @tag_list = Tag.all
   end
 
