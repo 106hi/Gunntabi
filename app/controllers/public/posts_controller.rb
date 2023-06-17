@@ -5,9 +5,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if params['area'] # if params['area'] がある場合
+    # エリアごとのリンクを押した時にエリアのページを開く
+    if params['area']
       @posts = Post.where(area: params['area'])
-    else # ないばあい
+    else
       @posts = Post.all
     end
     @tag_list = Tag.all
