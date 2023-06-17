@@ -3,10 +3,10 @@
     <div class="col-lg-7 mb-2">
       <div class="box">
         <img src="assets/gunnma_green.png">
-        <p class="north_area">北毛エリア</p>
-        <p class="central_area">中毛エリア</p>
-        <p class="west_area">西毛エリア</p>
-        <p class="east_area">東毛エリア</p>
+        <p class="north_area"><%= link_to posts_path(area: 1) do %> 北毛エリア <% end %></p>
+        <p class="central_area"><%= link_to posts_path(area: 2) do %> 中毛エリア <% end %></p>
+        <p class="west_area"><%= link_to posts_path(area: 3) do %> 西毛エリア <% end %></p>
+        <p class="east_area"><%= link_to posts_path(area: 4) do %> 東毛エリア <% end %></p>
       </div>
       <div>北毛エリア：利根郡、吾妻郡、沼田市</div>
       <div>中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡</div>
