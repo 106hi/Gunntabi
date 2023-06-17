@@ -1,4 +1,3 @@
-<%#= image_tag f.customer.image %>写真
 <%= @post.customer.nickname %><br>
 <% if @post.get_image %>
   <% @post.image.each do |image| %>
@@ -12,11 +11,23 @@
   <thead>
     <tr>
       <th><%= @post.post_name %></th>
-      <th>いいね</th>
+      <th id="favorite-btn<%= @post.id %>">
+        <%= render "public/favorites/favorite-btn", post: @post %>
+      </th>
       <th>
         <% if @post.customer == current_customer %>
           <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success' %>
           <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: 'btn btn-danger' %>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <% @post_tags.each do |tag| %>
+          <% if tag.posts.count > 0 %>
+            <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+            <%= "(#{tag.posts.count})" %>
+          <% end %>
         <% end %>
       </th>
     </tr>
@@ -29,3 +40,9 @@
     <td><%= @post.introduction %></td>
   </tbody>
 </table>
+<div>
+  <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+</div>
+<div class="post-comments">
+  <%= render "public/post_comments/comment", post: @post %>
+</div>
