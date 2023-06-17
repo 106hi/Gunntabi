@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <th><%= f.label "エリア" %></th>
-    <td><%= f.select :area, ["中毛エリア", "西毛エリア", "東毛エリア", "北毛エリア"], include_blank: "選択してください" %></td>
+    <td><%= f.select :area, Post.areas_i18n.invert %></td>
   </tr>
   <!--<tr>-->
   <!--  <th><%= f.label "公開設定" %></th>-->
