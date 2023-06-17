@@ -1,0 +1,8 @@
+ja:
+  enums:
+    post:
+      area:
+        north_area: "北毛エリア"
+        central_area: "中毛エリア"
+        west_area: "西毛エリア"
+        east_area: "東毛エリア"
