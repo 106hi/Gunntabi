@@ -1,9 +1,5 @@
 <%= @post.customer.nickname %><br>
-<%# if @post.get_post_image %>
-  <%# @post.image.each do |image| %>
-    <%= image_tag @post.get_post_image, size: "200x200" %>
-  <%# end %>
-<%# end %>
+<%= image_tag @post.get_post_image, size: "280x200", style: "object-fit: cover;" %>
 <h5>住所</h5>
 <%= @post.address %><br>
 投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
