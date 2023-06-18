@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resource :favorites, only: %i[create destroy]
       resources :post_comments, only: %i[create destroy]
     end
-    resources :customers, only: %i[show edit update] do
+    resources :customers, only: %i[show edit update destroy] do
       member do
         get :favorites
       end

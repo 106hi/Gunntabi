@@ -1,6 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 
-
 .box {
   position: relative;
 
@@ -31,4 +30,14 @@
     left: 70%;
     font-size: 25px;
   }
+}
+
+.card-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-text {
+  display: inline-flex;
+  bottom: 3%;
 }
