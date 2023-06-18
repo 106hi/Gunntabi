@@ -27,7 +27,7 @@
   <div class="row mx-4">
     <% @posts.each do |post| %>
     <div class="card ml-2 mb-2" style="width: 280px;">
-      <img class="card-img-top"><%= image_tag post.get_post_image, class: "card-img" %>
+      <%= image_tag post.get_post_image, class: "card-img card-img-top" %>
       <div class="card-body">
         <h5><%= post.post_name %></h5>
         <p><%= post.introduction.truncate(30) %></p>
