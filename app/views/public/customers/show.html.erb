@@ -10,9 +10,9 @@
     <div class="row">
     <table>
       <tr>
-        <td><%= image_tag @customer.get_image, size: "100x100" %></td>
+        <td><%= image_tag @customer.get_image, class: "customer-img rounded-circle mr-3", size: "100x100" %></td>
         <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "50x5", style: 'border-radius:15px' %></td>
-        <td valign="bottom" class="pb-2">
+        <td valign="bottom" class="pb-2 pl-3">
           <% if @customer == current_customer %>
             <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
             <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
@@ -27,7 +27,7 @@
   <div class="row mx-4">
     <% @posts.each do |post| %>
     <div class="card ml-2 mb-2" style="width: 280px;">
-      <%= image_tag post.get_post_image, class: "card-img card-img-top" %>
+      <%= image_tag post.get_post_image, class: "card-img" %>
       <div class="card-body">
         <h5><%= post.post_name %></h5>
         <p><%= post.introduction.truncate(30) %></p>
