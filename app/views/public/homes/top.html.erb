@@ -18,7 +18,7 @@
       <% @posts.each do |post| %>
       <table class="table">
         <tr>
-          <td rowspan="2"><%= image_tag post.get_image[0], size: "100x100" %></td>
+          <td rowspan="2"><%= image_tag post.get_post_image, size: "100x100" %></td>
           <td><%= post.post_name %></td>
         </tr>
         <tr>
