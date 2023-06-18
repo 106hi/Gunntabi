@@ -32,6 +32,10 @@
   }
 }
 
+.customer-img {
+  object-fit: cover;
+}
+
 .card-img {
   height: 200px;
   object-fit: cover;
@@ -40,4 +44,8 @@
 .card-text {
   display: inline-flex;
   bottom: 3%;
+}
+
+.post-accessory {
+  display: inline-flex;
 }
