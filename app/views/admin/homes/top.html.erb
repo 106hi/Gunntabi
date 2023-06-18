@@ -16,7 +16,11 @@
   <tbody>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= customer.nickname %></td>
+      <td>
+        <%= link_to admin_customer_path(customer.id) do %>
+          <%= customer.nickname %>
+        <% end %>
+      </td>
       <td><%= customer.posts.count %></td>
       <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
     </tr>
