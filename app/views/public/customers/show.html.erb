@@ -1,19 +1,43 @@
-<% if @customer == current_customer %>
-  <h3>マイページ</h3>
-<% else %>
-  <h3><%= @customer.nickname %>さんのページ</h3>
-<% end %>
-<table>
-  <tr>
-    <td><%= image_tag @customer.get_image, size: "100x100" %></td>
-    <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "40x5" %></td>
-    <td valign="bottom" class="pb-2">
-      <% if @customer == current_customer %>
-        <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary' %>
-      <% end %>
-    </td>
-  </tr>
-</table>
-<%= link_to "いいね一覧", favorites_customer_path(@customer) %>
-<h4>投稿</h4>
-<div>投稿数：<%= @posts.count %></div>
+<div class="container">
+  <div class="row">
+    <% if @customer == current_customer %>
+      <h3>マイページ</h3>
+    <% else %>
+      <h3><%= @customer.nickname %>さんのページ</h3>
+    <% end %>
+    <%= link_to "いいね一覧", favorites_customer_path(@customer), class: 'ml-5' %>
+  </div>
+    <div class="row">
+    <table>
+      <tr>
+        <td><%= image_tag @customer.get_image, size: "100x100" %></td>
+        <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "50x5", style: 'border-radius:15px' %></td>
+        <td valign="bottom" class="pb-2">
+          <% if @customer == current_customer %>
+            <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
+            <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    </div>
+    <h4>投稿</h4>
+    <div>投稿数：<%= @posts.count %></div>
+  </div>
+  <div class="row mx-4">
+    <% @posts.each do |post| %>
+    <div class="card ml-2 mb-2" style="width: 280px;">
+      <img class="card-img-top"><%= image_tag post.get_post_image %>
+      <div class="card-body">
+        <h5><%= post.post_name %></h5>
+      </div>
+      <div class="card-text">
+        <p id="favorite-btn<%= post.id %>" class="ml-2">
+          <%= render "public/favorites/favorite-btn", post: post %>
+        </p>
+        <p><%= render "public/post_comments/counter", post: post %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <%= @post.customer.nickname %><br>
-<% if @post.get_image %>
+<% if @post.get_post_image %>
   <% @post.image.each do |image| %>
     <%= image_tag image, size: "200x200" %>
   <% end %>

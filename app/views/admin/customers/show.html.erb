@@ -33,7 +33,7 @@
     <% @posts.each do |post| %>
     <tbody>
       <tr>
-        <td><%= image_tag post.get_image[0], size: "150x150" %></td>
+        <td><%= image_tag post.get_image, size: "150x150" %></td>
         <td><%= post.post_name %></td>
         <td><i class="fas fa-heart" style="color: #000;"> <%= post.favorites.count %></i></td>
         <td><%= render "public/post_comments/counter", post: post %></td>
