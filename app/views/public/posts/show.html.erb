@@ -1,40 +1,33 @@
+<%= image_tag @post.customer.get_image, class: "customer-img rounded-circle mr-1 mb-2", size: "50x50" %>
 <%= @post.customer.nickname %><br>
-<%= image_tag @post.get_post_image, size: "280x200", style: "object-fit: cover;" %>
+<%= image_tag @post.get_post_image, size: "450x300", style: "object-fit: cover;" %>
 <h5>住所</h5>
 <%= @post.address %><br>
 投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %>
+<div><%= @post.post_name %>
+  <div id="favorite-btn<%= @post.id %>", class="post-accessory ml-2">
+    <%= render "public/favorites/favorite-btn", post: @post %>
+  </div>
+  <% if @post.customer == current_customer %>
+    <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success' %>
+    <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: 'btn btn-danger' %>
+  <% end %>
+</div>
 <table>
-  <thead>
-    <tr>
-      <th><%= @post.post_name %></th>
-      <th id="favorite-btn<%= @post.id %>">
-        <%= render "public/favorites/favorite-btn", post: @post %>
-      </th>
-      <th>
-        <% if @post.customer == current_customer %>
-          <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success' %>
-          <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class: 'btn btn-danger' %>
+  <tr>
+    <th>
+      <% @post_tags.each do |tag| %>
+        <% if tag.posts.count > 0 %>
+          <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+          <%= "(#{tag.posts.count})" %>
         <% end %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        <% @post_tags.each do |tag| %>
-          <% if tag.posts.count > 0 %>
-            <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-            <%= "(#{tag.posts.count})" %>
-          <% end %>
-        <% end %>
-      </th>
-    </tr>
-  </thead>
-  <tbody class="table">
-    <tr>
-      <th>おすすめポイント</th>
-      <th colspan="3"></th>
-    </tr>
-    <td><%= @post.introduction %></td>
-  </tbody>
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th>おすすめポイント</th>
+  </tr>
+  <td><%= @post.introduction %></td>
 </table>
 <div>
   <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
