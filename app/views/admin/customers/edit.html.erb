@@ -27,17 +27,6 @@
     <div class="col-4"><%= f.label "メールアドレス" %></div>
     <div class="col-8"><%= f.text_field :email, autofocus: true %></div>
   </div>
-  <div class="row">
-    <div class="col"><%= f.label "会員ステータス" %></div>
-    <div class="col">
-      <%= f.radio_button :is_deleted, :false %>
-      <%= f.label :is_deleted, "有効" %>
-    </div>
-    <div class="col">
-      <%= f.radio_button :is_deleted, :true %>
-      <%= f.label :is_deleted, "退会" %>
-    </div>
-  </div>
   <div class="error">
     <% if @customer.errors.any? %>
       <%= @customer.errors.count %>件のエラーがあります
