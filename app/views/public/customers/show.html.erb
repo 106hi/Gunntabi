@@ -27,16 +27,18 @@
   <div class="row mx-4">
     <% @posts.each do |post| %>
     <div class="card ml-2 mb-2" style="width: 280px;">
-      <img class="card-img-top"><%= image_tag post.get_post_image %>
+      <img class="card-img-top"><%= image_tag post.get_post_image, class: "card-img" %>
       <div class="card-body">
         <h5><%= post.post_name %></h5>
+        <p><%= post.introduction.truncate(30) %></p>
       </div>
       <div class="card-text">
-        <p id="favorite-btn<%= post.id %>" class="ml-2">
+        <p id="favorite-btn<%= post.id %>" class="ml-5">
           <%= render "public/favorites/favorite-btn", post: post %>
         </p>
-        <p><%= render "public/post_comments/counter", post: post %></p>
+        <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
       </div>
+
     </div>
     <% end %>
   </div>
