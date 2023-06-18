@@ -19,8 +19,11 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def confirm
-
+  def destroy
+    customer = Customer.find(params[:id])
+    customer.destroy
+    flash[:notice] = '退会に成功しました。'
+    redirect_to '/'
   end
 
   def favorites

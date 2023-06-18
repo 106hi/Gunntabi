@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_many_attached :image
+  has_one_attached :image
   belongs_to :customer
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   enum area: {"---":0, north_area:1, central_area:2, west_area:3, east_area:4}
 
-  def get_image
+  def get_post_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_scenery_gray.jpeg')
       image.attach(io: File.open(file_path), filename: 'default-image_scenery.jpeg', content_type: 'image/jpeg')
