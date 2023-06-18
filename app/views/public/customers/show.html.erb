@@ -21,16 +21,16 @@
       </tr>
     </table>
     </div>
-    <h4>投稿</h4>
-    <div>投稿数：<%= @posts.count %></div>
-  </div>
+    </div>
+    <h3 class="ml-5">投稿</h3>
+    <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
   <div class="row mx-4">
     <% @posts.each do |post| %>
-    <div class="card ml-2 mb-2" style="width: 280px;">
+    <div class="card border-0 ml-4 mb-2" style="width: 280px;">
       <%= image_tag post.get_post_image, class: "card-img" %>
       <div class="card-body">
-        <h5><%= post.post_name %></h5>
-        <p><%= post.introduction.truncate(30) %></p>
+        <h4><%= post.post_name %></h4>
+        <p><%= post.introduction.truncate(40) %></p>
       </div>
       <div class="card-text">
         <p id="favorite-btn<%= post.id %>" class="ml-5">
