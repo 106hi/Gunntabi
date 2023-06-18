@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(%i[first_name last_name nickname phone_number email profile])
+    params.require(:customer).permit(%i[image first_name last_name nickname phone_number email profile])
   end
 
   def set_customer
