@@ -20,8 +20,7 @@
   <% @posts.each do |post| %>
   <tbody>
     <tr>
-      <!--複数画像の１枚目だけ表示-->
-      <td><%= image_tag post.get_image[0], size: "150x150" %></td>
+      <td><%= image_tag post.get_post_image, size: "150x150" %></td>
       <td><%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %></td>
       <td>
         <%= link_to post_path(post.id) do %>
