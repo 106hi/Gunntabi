@@ -7,4 +7,10 @@ class Admin::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to '/admin'
+  end
 end
