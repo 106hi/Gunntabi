@@ -1,40 +1,32 @@
-<h3>新規投稿</h3>
-<%= form_with model: @post do |f| %>
-<table>
-  <tr>
-    <th><%= f.label :image, "画像" %></th>
-    <td><%= f.file_field :image, accept: "image/*" %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "スポット名" %></th>
-    <td><%= f.text_field :post_name %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "おすすめポイント" %></th>
-    <td><%= f.text_area :introduction %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "タグ" %></th>
-    <td><%= f.text_field :tag_name, placeholder: "群馬,旅,タグ" %></td>
-    <td>※「,（カンマ）」を入れることでタグを複数作成できます。</td>
-  </tr>
-  <tr>
-    <th><%= f.label "住所" %></th>
-    <td><%= f.text_field :address %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "エリア" %></th>
-    <td><%= f.select :area, Post.areas_i18n.invert %></td>
-  </tr>
-  <!--<tr>-->
-  <!--  <th><%= f.label "公開設定" %></th>-->
-  <!--  <td>-->
-  <!--    <%= f.radio_button :is_release, false %>-->
-  <!--    <%= f.label :公開 %>-->
-  <!--    <%= f.radio_button :is_release, true %>-->
-  <!--    <%= f.label :非公開 %>-->
-  <!--  </td>-->
-  <!--</tr>-->
-</table>
-<%= f.submit "投稿", class: 'btn btn-success' %>
+<%= form_with model: @post, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <h3>新規投稿</h3>
+  <table>
+    <tr>
+      <th><%= f.label :image, "画像" %></th>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "スポット名" %></th>
+      <td><%= f.text_field :post_name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "おすすめポイント" %></th>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "タグ" %></th>
+      <td><%= f.text_field :tag_name, placeholder: "群馬,旅,タグ" %></td>
+      <td>※「,（カンマ）」を入れることでタグを複数作成できます。</td>
+    </tr>
+    <tr>
+      <th><%= f.label "住所" %></th>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "エリア" %></th>
+      <td><%= f.select :area, Post.areas_i18n.invert %></td>
+    </tr>
+  </table>
+  <%= f.submit "投稿", class: 'btn btn-success' %>
 <% end %>

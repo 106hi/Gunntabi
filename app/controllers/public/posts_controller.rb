@@ -31,16 +31,16 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(',')
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to posts_path
+      redirect_to posts_path, notice: '投稿に成功しました'
     else
-      redirect_to new_post_path
+      render :new
     end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to '/posts'
+    redirect_to posts_path, alert: '投稿を削除しました'
   end
 
   def update
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
         relation.delete
       end
       post.save_tag(tag_list)
-      redirect_to post_path(post.id)
+      redirect_to post_path(post.id), notice: '編集を保存しました'
     else
       render :edit
     end

@@ -11,9 +11,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    if customer.update(customer_params)
-      redirect_to customer_path(customer.id)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id), notice: '編集を保存しました'
     else
       render :edit
     end
@@ -22,8 +22,7 @@ class Public::CustomersController < ApplicationController
   def destroy
     customer = Customer.find(params[:id])
     customer.destroy
-    flash[:notice] = '退会に成功しました。'
-    redirect_to '/'
+    redirect_to root_path, notice: '退会に成功しました'
   end
 
   def favorites

@@ -4,7 +4,11 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
-  has_many :tags, through: :tag_maps 
+  has_many :tags, through: :tag_maps
+
+  validates :post_name, presence: true
+  validates :introduction, presence: true
+  validates :address, presence: true
 
   enum area: {"---":0, north_area:1, central_area:2, west_area:3, east_area:4}
 
