@@ -61,11 +61,14 @@ class Public::PostsController < ApplicationController
     end
   end
 
+
   def tag_search
+
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
+
 
   def search
     @tag_list = Tag.all
@@ -73,6 +76,7 @@ class Public::PostsController < ApplicationController
     @keyword = params[:keyword]
     render "public/posts/index"
   end
+
 
   private
   def post_params
