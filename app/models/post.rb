@@ -37,4 +37,9 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+
+  def self.search(keyword)
+    where(["post_name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
+  end
 end

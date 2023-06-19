@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <%= render 'layouts/header' %>
+      <%= render 'layouts/header', keyword: @keyword %>
     </header>
     <div class="ml-5">
       <div class="text-center mt-3"><h5><strong><%= flash[:notice] %></strong></h5></div>
