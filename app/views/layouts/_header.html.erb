@@ -50,6 +50,11 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-images"></i> 投稿一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to admin_post_comments_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-comments"></i> コメント管理
             <% end %>
