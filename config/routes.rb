@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
+    get "search" => "posts#search"
     resources :posts, only: %i[new index show edit create destroy update] do
       resource :favorites, only: %i[create destroy]
       resources :post_comments, only: %i[create destroy]
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
       end
     end
     resources :tags do
-      get 'posts', to: 'posts#search'
+      get 'posts', to: 'posts#tag_search'
     end
   end
 
