@@ -89,7 +89,11 @@
           </li>
         <% end %>
       </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= render "layouts/search", keyword: keyword %>
+        </li>
+      </ul>
     </div>
-    <%= render "layouts/search", keyword: keyword %>
   </div>
 </nav>

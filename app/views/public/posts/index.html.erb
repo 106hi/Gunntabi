@@ -7,8 +7,10 @@
 </div>
 <div class="row mb-3">
 <% @tag_list.each do |list| %>
-  <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-  <%= "(#{list.posts.count})" %>
+  <% if list.posts.count > 0 %>
+    <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
 <% end %>
 </div>
 <div class="row">
