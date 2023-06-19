@@ -9,7 +9,6 @@
   <thead class="table-active">
     <tr>
       <th></th>
-      <th></th>
       <th>スポット</th>
       <th>投稿者</th>
       <th>投稿日</th>
@@ -21,7 +20,6 @@
   <tbody>
     <tr>
       <td><%= image_tag post.get_post_image, size: "150x150" %></td>
-      <td><%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %></td>
       <td>
         <%= link_to post_path(post.id) do %>
           <%= post.post_name %>
