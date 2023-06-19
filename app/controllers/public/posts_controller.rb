@@ -61,10 +61,17 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  def search
+  def tag_search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
+  end
+
+  def search
+    @tag_list = Tag.all
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "public/posts/index"
   end
 
   private
