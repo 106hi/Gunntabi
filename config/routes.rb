@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    post 'guest_sign_in', to: 'customers#guest_sign_in'
     root to: "homes#top"
     get "search" => "posts#search"
     resources :posts, only: %i[new index show edit create destroy update] do

@@ -36,6 +36,12 @@ class Public::CustomersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to customer_path(customer), notice: 'ゲストでログインしました'
+  end
+
   private
   def customer_params
     params.require(:customer).permit(%i[image first_name last_name nickname phone_number email profile])
