@@ -23,6 +23,12 @@ class Customer < ApplicationRecord
     image
   end
 
+  def self.guest
+    find_or_create_by!(last_name: 'guest', first_name: 'customer', email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def full_name
     "#{last_name} #{first_name}"
   end

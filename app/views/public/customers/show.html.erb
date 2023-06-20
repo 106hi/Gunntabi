@@ -13,7 +13,7 @@
         <td><%= image_tag @customer.get_image, class: "customer-img rounded-circle mr-3", size: "100x100" %></td>
         <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "50x5", style: 'border-radius:15px' %></td>
         <td valign="bottom" class="pb-2 pl-3">
-          <% if @customer == current_customer %>
+          <% if @customer == current_customer && customer.email != "guest@example.com" %>
             <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
             <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
           <% end %>

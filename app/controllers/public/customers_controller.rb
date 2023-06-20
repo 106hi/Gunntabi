@@ -1,5 +1,11 @@
 class Public::CustomersController < ApplicationController
+  # before_action :authenticate_customer!, except: [:index]
   before_action :set_customer, only: [:favorites]
+  before_action :ensure_guest_customer, only: [:edit]
+
+  # def index
+  #   redirect_to new_customer_registration_path
+  # end
 
   def show
     @customer = Customer.find(params[:id])
@@ -37,5 +43,12 @@ class Public::CustomersController < ApplicationController
 
   def set_customer
     @customer = Customer.find(params[:id])
+  end
+
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.email == "guest@example.com"
+      redirect_to customer_path(current_customer), alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+    end
   end
 end
