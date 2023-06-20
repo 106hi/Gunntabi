@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   validates :introduction, presence: true
   validates :address, presence: true
 
-  enum area: {"---":0, north_area:1, central_area:2, west_area:3, east_area:4}
+  enum area: {north_area:1, central_area:2, west_area:3, east_area:4}
 
   def get_post_image
     unless image.attached?

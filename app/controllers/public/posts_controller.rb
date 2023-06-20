@@ -6,8 +6,9 @@ class Public::PostsController < ApplicationController
 
   def index
     # エリアごとのリンクを押した時にエリアのページを開く
-    if params['area']
-      @posts = Post.where(area: params['area'])
+    if params[:area]
+      @posts = Post.where(area: params[:area])
+      @area_name = I18n.t("enums.post.area.#{Post.areas.invert[params[:area].to_i]}")
     else
       @posts = Post.all
     end
