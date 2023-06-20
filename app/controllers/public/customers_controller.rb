@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!, except: [:index]
+  before_action :authenticate_customer!, except: [:index, :guest_sign_in]
   before_action :set_customer, only: [:favorites]
   before_action :ensure_guest_customer, only: [:edit]
 
