@@ -1,6 +1,6 @@
 <%= form_with model: @post, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
   <h3>新規投稿</h3>
+  <%= render 'layouts/error_messages', model: f.object %>
   <table>
     <tr>
       <th><%= f.label :image, "画像" %></th>
