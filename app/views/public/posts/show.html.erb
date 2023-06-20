@@ -29,8 +29,11 @@
   </tr>
   <td><%= @post.introduction %></td>
 </table>
+<h4>コメント</h4>
 <div>
-  <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+  <% if customer_signed_in? %>
+    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+  <% end %>
 </div>
 <div class="post-comments">
   <%= render "public/post_comments/comment", post: @post %>

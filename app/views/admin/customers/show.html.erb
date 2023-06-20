@@ -30,7 +30,7 @@
   <h3 class="ml-5">投稿</h3>
   <div class="row mx-4">
     <% @posts.each do |post| %>
-    <div class="card border-0 ml-4 mb-4" style="width: 280px;">
+    <div class="card border ml-4 mb-4" style="width: 280px;">
       <%= image_tag post.get_post_image, class: "card-img" %>
       <div class="card-body">
         <%= link_to post_path(post.id), class: "text-dark" do %>
