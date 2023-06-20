@@ -1,7 +1,15 @@
 @use '~bootstrap/scss/bootstrap';
 
+li {
+  list-style: none;
+}
+
 body {
   background-color: snow;
+}
+
+.area_detail {
+  font-size: 20px;
 }
 
 .box {
@@ -19,7 +27,7 @@ body {
   .central_area {
     position: absolute;
     top: 52%;
-    left: 42%;
+    left: 40%;
     font-size: 25px;
   }
   .west_area {
@@ -68,6 +76,16 @@ body {
   margin: 0 0 0 auto;
   height: 50px;
   width: 200px;
+}
+
+.card-img-top {
+  height: 120px;
+  object-fit: cover;
+}
+
+.card-body-top {
+  padding-bottom: inherit;
+  padding-top: 1px;
 }
 
 .post-accessory {

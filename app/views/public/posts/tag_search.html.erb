@@ -1,11 +1,13 @@
 <h3>タグリスト</h3>
 <% @tag_list.each do |list| %>
-  <%= list.tag_name %>
-  <%= "(#{list.posts.count})" %>
+  <% if list.posts.count > 0 %>
+    <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
 <% end %>
-<br>
-<%= "#{@tag.tag_name}" %>
-<br>
+<h5>
+  ”<%= "#{@tag.tag_name}" %>”の検索結果
+</h5>
 <% @posts.each do |post| %>
   <%= link_to post.post_name, post %>
 <% end %>

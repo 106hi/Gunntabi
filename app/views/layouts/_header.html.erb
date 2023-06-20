@@ -1,104 +1,111 @@
 <nav class="navbar navbar-expand-lg" style="background-color: burlywood;">
-  <div class="container-fluid">
-    <div class="mx-1">
-      <div class="logo-container">
-        <div class="mx-1">
-          <% if admin_signed_in? %>
-            <%= link_to admin_path do %>
-              <div class="logo-container">
-                <%= image_tag 'Gunntabi.png', alt: 'Logo', style: 'width: 100px; height: auto;' %>
-              </div>
-            <% end %>
-          <% else %>
-            <%= link_to root_path do %>
-              <div class="logo-container">
-                <%= image_tag 'Gunntabi.png', alt: 'Logo', style: 'width: 100px; height: auto;' %>
-              </div>
-            <% end %>
+  <div class="mx-1">
+    <div class="logo-container">
+      <div class="mx-1">
+        <% if admin_signed_in? %>
+          <%= link_to admin_path do %>
+            <div class="logo-container">
+              <%= image_tag 'Gunntabi.png', alt: 'Logo', style: 'width: 100px; height: auto;' %>
+            </div>
           <% end %>
-        </div>
+        <% else %>
+          <%= link_to root_path do %>
+            <div class="logo-container">
+              <%= image_tag 'Gunntabi.png', alt: 'Logo', style: 'width: 100px; height: auto;' %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-        <% if customer_signed_in? %>
-          <li class="nav-item">
-            <%= link_to customer_path(current_customer.id), class: 'nav-link text-dark' do %>
-              <i class="fas fa-user-circle"></i> マイページ
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_post_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-edit"></i> 投稿
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-images"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to favorites_customer_path(current_customer.id), class: 'nav-link text-dark' do %>
-              <i class="fas fa-hand-holding-heart"></i> いいね一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-        <% elsif admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to admin_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-users"></i> 会員一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-images"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admin_post_comments_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-comments"></i> コメント管理
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to guest_sign_in_path, class: 'nav-link text-dark', method: :post do %>
-              <i class="fa-regular fa-user"></i> ゲストログイン(閲覧用)
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-images"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-      <ul class="navbar-nav ml-auto">
+  </div>
+  <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <% if customer_signed_in? %>
         <li class="nav-item">
-          <%= render "layouts/search", keyword: keyword %>
+          <%= link_to customer_path(current_customer.id), class: 'nav-link text-dark' do %>
+            <i class="fas fa-user-circle"></i> マイページ
+          <% end %>
         </li>
-      </ul>
-    </div>
+        <li class="nav-item">
+          <%= link_to new_post_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-edit"></i> 投稿
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-images"></i> 投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to favorites_customer_path(current_customer.id), class: 'nav-link text-dark' do %>
+            <i class="fas fa-hand-holding-heart"></i> いいね一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admin_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-users"></i> 会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-images"></i> 投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_post_comments_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-comments"></i> コメント管理
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to guest_sign_in_path, class: 'nav-link text-dark', method: :post do %>
+            <i class="fa-regular fa-user"></i> ゲストログイン(閲覧用)
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-images"></i> 投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-user-plus"></i> 新規登録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+            <i class="fas fa-sign-in-alt"></i> ログイン
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <ul class="navber-nav ml-auto">
+      <li class="nav-item">
+      <% if customer_signed_in? %>
+        ようこそ<%= current_customer.nickname %>さん!
+      <% end %>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= render "layouts/search", keyword: keyword %>
+      </li>
+    </ul>
   </div>
 </nav>

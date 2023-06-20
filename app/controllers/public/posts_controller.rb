@@ -8,9 +8,11 @@ class Public::PostsController < ApplicationController
     # エリアごとのリンクを押した時にエリアのページを開く
     if params[:area]
       @posts = Post.where(area: params[:area])
+      @posts = Post.all.order(created_at: :desc)
       @area_name = I18n.t("enums.post.area.#{Post.areas.invert[params[:area].to_i]}")
     else
       @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
     end
     @tag_list = Tag.all
   end
