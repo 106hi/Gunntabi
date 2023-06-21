@@ -1,6 +1,5 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: %i[index show guest_sign_in]
-  before_action :set_customer, only: [:favorites]
   before_action :authorize_customer, only: %i[edit update]
   before_action :ensure_guest_customer, only: [:edit]
 
@@ -49,9 +48,7 @@ class Public::CustomersController < ApplicationController
     params.require(:customer).permit(%i[image first_name last_name nickname phone_number email profile])
   end
 
-  def set_customer
-    @customer = Customer.find(params[:id])
-  end
+
 
   def authorize_customer
     @customer = Customer.find(params[:id])
