@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!, except: %i[index show tag_search search]
+  before_action :authorize_customer, only: %i[edit update]
+
   def new
     @post = Post.new
     @post = current_customer.posts.new
@@ -64,13 +67,11 @@ class Public::PostsController < ApplicationController
     end
   end
 
-
   def tag_search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
-
 
   def search
     @tag_list = Tag.all
@@ -79,9 +80,15 @@ class Public::PostsController < ApplicationController
     render "public/posts/index"
   end
 
-
   private
+
   def post_params
     params.require(:post).permit(%i[image post_name introduction address area])
+  end
+
+  def authorize_customer
+    unless current_customer == @customer
+      redirect_to root_path, alert: '他のユーザーの投稿は編集できません'
+    end
   end
 end

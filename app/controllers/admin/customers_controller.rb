@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts
@@ -24,6 +26,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(%i[first_name last_name nickname phone_number email])
   end
