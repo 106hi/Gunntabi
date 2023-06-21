@@ -4,60 +4,65 @@
       <span style="background-color: #f2f2f2; font-size: 23px;">会員情報編集</span>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-      <%= form_with model: @customer do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-        <table>
-          <tr>
-            <div class="form_group">
-              <th scope="col">
-                <%= f.label :名前 %>
-              </th>
-              <td><%= f.label :last_name, "(姓)" %></td>
-              <td><%= f.text_field :last_name %></td>
-              <td><%= f.label :first_name, "(名)" %></td>
-              <td><%= f.text_field :first_name %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="form_group">
-              <th><%= f.label :nickname, :ニックネーム %></th>
-              <td></td>
-              <td><%= f.text_field :nickname %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="form_group">
-              <th><%= f.label :email, :メールアドレス %></th>
-              <td></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="form-group">
-              <th><%= f.label :phone_number, :電話番号 %></th>
-              <td></td>
-              <td><%= f.text_field :phone_number %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="form-action">
-              <th><%= f.label :プロフィール画像 %></th>
-              <td></td>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="form-action">
-              <th><%= f.label :プロフィール文 %></th>
-              <td></td>
-              <td><%= f.text_area :profile %></td>
-            </div>
-          </tr>
-        </table>
-      <%= f.submit "変更を保存", class: 'btn btn-success' %>
-      <% end %>
+  <%= form_with model: @customer do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :名前 %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.label :last_name, "(姓)" %>
+        <%= f.text_field :last_name, size: "25" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.label :first_name, "(名)" %>
+        <%= f.text_field :first_name, size: "25" %>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :nickname, "ニックネーム" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_field :nickname, size: "40" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :phone_number, "電話番号" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_field :phone_number, size: "30" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :img, "プロフィール画像" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :profire, "プロフィール文" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_area :profile, size: "55x7", style: 'border-radius:15px' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 offset-md-3">
+        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
 </div>

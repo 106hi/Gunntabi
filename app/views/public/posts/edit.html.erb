@@ -5,6 +5,7 @@
     </div>
   </div>
   <%= form_with model: @post do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
       <div class="col-md-2 px-md-0 offset-md-1 my-3">
         <%= f.label :img, "画像" %>
@@ -53,7 +54,7 @@
         <%= f.label :area, "エリア" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
-        <%= f.select :area, Post.areas_i18n.invert %>
+        <%= f.select :area, Post.areas_i18n.invert, include_blank: "選択してください" %>
       </div>
     </div>
     <div class="row">
