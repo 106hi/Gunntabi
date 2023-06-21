@@ -21,8 +21,12 @@
         <th>
           <% @post_tags.each do |tag| %>
             <% if tag.posts.count > 0 %>
-              <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-              <%= "(#{tag.posts.count})" %>
+              <%= link_to tag_posts_path(tag_id: tag.id), style: 'color: #00008b;' do %>
+                <i class="fa-solid fa-hashtag"></i><%= tag.tag_name %>
+              <% end %>
+              <div class="mr-2">
+                <%= "(#{tag.posts.count})" %>
+              </div>
             <% end %>
           <% end %>
         </th>

@@ -12,37 +12,16 @@
   <div class="row mb-3">
     <% @tag_list.each do |list| %>
       <% if list.posts.count > 0 %>
-        <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-        <%= "(#{list.posts.count})" %>
+        <%= link_to tag_posts_path(tag_id: list.id), style: 'color: maroon;' do %>
+          <i class="fa-solid fa-hashtag"></i><%= list.tag_name %>
+        <% end %>
+        <div class="mr-2">
+          <%= "(#{list.posts.count})" %>
+        </div>
       <% end %>
     <% end %>
   </div>
 </div>
-<div class="row mx-4">
-    <% @posts.each do |post| %>
-    <div class="card border ml-4 mb-4" style="width: 280px;">
-      <div class="card-header">
-        <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-3", size: "30x30" %>
-        <%= link_to customer_path(post.customer.id), class: "text-dark" do %>
-          <%= post.customer.nickname %>
-        <% end %>
-      </div>
-      <%= image_tag post.get_post_image, class: "card-img" %>
-      <div class="card-body">
-        <%= link_to post_path(post.id), class: "text-dark" do %>
-          <h4><%= post.post_name %></h4>
-          <p><%= post.introduction.truncate(40) %></p>
-        <% end %>
-      </div>
-      <div class="card-text">
-        <p id="favorite-btn<%= post.id %>" class="ml-5">
-          <%= render "public/favorites/favorite-btn", post: post %>
-        </p>
-        <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
-      </div>
-      <div class="card-footer text-muted">
-        <%= post.created_at.strftime('%Y/%m/%d') %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mx-1">
+  <%= render "public/posts/post_card", posts: @posts %>
 </div>

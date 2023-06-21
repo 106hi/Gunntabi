@@ -5,42 +5,46 @@
     <% else %>
       <h3><%= @customer.nickname %>さんのページ</h3>
     <% end %>
-    <%= link_to "いいね一覧", favorites_customer_path(@customer), class: 'ml-5' %>
-  </div>
-    <div class="row">
-    <table>
-      <tr>
-        <td><%= image_tag @customer.get_image, class: "customer-img rounded-circle mr-3", size: "100x100" %></td>
-        <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "50x5", style: 'border-radius:15px' %></td>
-        <td valign="bottom" class="pb-2 pl-3">
-          <% if @customer == current_customer && @customer.email != "guest@example.com" %>
-            <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
-            <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    </div>
-    </div>
-    <h3 class="ml-5">投稿</h3>
-    <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
-  <div class="row mx-4">
-    <% @posts.each do |post| %>
-      <div class="card border ml-4 mb-2" style="width: 280px;">
-        <%= image_tag post.get_post_image, class: "card-img" %>
-        <div class="card-body">
-          <%= link_to post_path(post.id), class: "text-dark" do %>
-            <h4><%= post.post_name %></h4>
-            <p><%= post.introduction.truncate(40) %></p>
-          <% end %>
-        </div>
-        <div class="card-text">
-          <p id="favorite-btn<%= post.id %>" class="ml-5">
-            <%= render "public/favorites/favorite-btn", post: post %>
-          </p>
-          <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
-        </div>
-      </div>
+    <%= link_to favorites_customer_path(@customer), class: 'mt-1 ml-5', style: 'color: maroon;' do %>
+      いいね一覧へ
     <% end %>
   </div>
+  <div class="row">
+    <div class="col-lg-2 col-xl-2 my-2">
+      <%= image_tag @customer.get_image, class: "customer-img rounded-circle mr-3", size: "100x100" %>
+    </div>
+    <div class="col-lg-7 col-xl-6 my-2">
+      <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x5", style: 'border-radius:15px' %>
+    </div>
+    <div class="col-lg-3 col-xl-2 my-2">
+      <% if @customer == current_customer && @customer.email != "guest@example.com" %>
+        <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
+        <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<h3 class="ml-5">投稿</h3>
+<div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
+<div class="row mx-2">
+  <% @posts.each do |post| %>
+    <div class="card border ml-4 mb-2" style="width: 280px;">
+      <%= image_tag post.get_post_image, class: "card-img" %>
+      <div class="card-body">
+        <%= link_to post_path(post.id), class: "text-dark" do %>
+          <h4><%= post.post_name %></h4>
+          <p><%= post.introduction.truncate(40) %></p>
+        <% end %>
+      </div>
+      <div class="card-text">
+        <p id="favorite-btn<%= post.id %>" class="ml-5">
+          <%= render "public/favorites/favorite-btn", post: post %>
+        </p>
+        <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
+      </div>
+      <div class="card-footer text-muted">
+        投稿日 : <%= post.created_at.strftime('%Y/%m/%d') %>
+      </div>
+    </div>
+  <% end %>
 </div>
