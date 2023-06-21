@@ -54,6 +54,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def authorize_customer
+    @customer = Customer.find(params[:id])
     unless current_customer == @customer
       redirect_to root_path, alert: '他のユーザーの編集はできません'
     end

@@ -87,7 +87,8 @@ class Public::PostsController < ApplicationController
   end
 
   def authorize_customer
-    unless current_customer == @customer
+    @post = Post.find(params[:id])
+    unless current_customer == @post.customer
       redirect_to root_path, alert: '他のユーザーの投稿は編集できません'
     end
   end
