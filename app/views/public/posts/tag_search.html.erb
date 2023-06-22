@@ -1,9 +1,10 @@
-<div class="col-11 my-3 ml-5">
+<div class="container">
+  <div class="my-3 ml-5">
   <h3>
     ”<i class="fa-solid fa-hashtag" style="color: #6a1816;"><%= "#{@tag.tag_name}" %></i>”の検索結果
   </h3>
 </div>
-<h5 class="col-md-3 mt-3 ml-5">タグリスト</h5>
+<h5 class="mt-3 ml-5">タグリスト</h5>
 <div class="row mb-4 ml-5">
   <%= render "public/posts/tag_list", tag_list: @tag_list %>
 </div>
@@ -34,4 +35,5 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>
