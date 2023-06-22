@@ -1,30 +1,30 @@
-<div class="container">
-  <div class="row my-3">
+<div class="row">
+  <div class="col-md-3 col-xl-2 my-3 ml-5">
     <% if @customer == current_customer %>
       <h3>マイページ</h3>
     <% else %>
       <h3><%= @customer.nickname %>さんのページ</h3>
     <% end %>
+  </div>
+  <div class="col-md-3 my-3 ml-2">
     <%= link_to favorites_customer_path(@customer), class: 'mt-1 ml-5', style: 'color: maroon;' do %>
       いいね一覧へ
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-lg-2 col-xl-2 my-2">
-      <%= image_tag @customer.get_image, class: "customer-img rounded-circle mr-3", size: "100x100" %>
-    </div>
-    <div class="col-lg-7 col-xl-6 my-2">
-      <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x5", style: 'border-radius:15px' %>
-    </div>
-    <div class="col-lg-3 col-xl-2 my-2">
-      <% if @customer == current_customer && @customer.email != "guest@example.com" %>
-        <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-2' %><br>
-        <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger' %>
-      <% end %>
-    </div>
-  </div>
 </div>
-<h3 class="ml-5">投稿</h3>
+<div class="col-4 ml-5">
+  <% if @customer == current_customer && @customer.email != "guest@example.com" %>
+    <%= link_to "会員情報編集", edit_customer_path(@customer.id), class: 'btn btn-primary mb-4 mr-3' %>
+    <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger mb-4' %>
+  <% end %>
+</div>
+<table>
+  <tr>
+    <td><%= image_tag @customer.get_image, class: "customer-img rounded-circle mx-3", size: "100x100" %></td>
+    <td><%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x5", style: 'border-radius:15px' %></td>
+  </tr>
+</table>
+<h3 class="mt-4 ml-5">投稿</h3>
 <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
 <div class="row mx-2">
   <% @posts.each do |post| %>

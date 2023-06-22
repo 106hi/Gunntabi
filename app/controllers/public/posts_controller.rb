@@ -50,10 +50,10 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
+    @post = Post.find(params[:id])
     # タグの編集&削除
     tag_list = params[:post][:tag_name].split(',')
-    if post.update(post_params)
+    if @post.update(post_params)
       # post_idに紐付いていたタグを@oldに入れる
       old_relations = TagMap.where(post_id: post.id)
       # それらを取り出して消す
@@ -63,7 +63,7 @@ class Public::PostsController < ApplicationController
       post.save_tag(tag_list)
       redirect_to post_path(post.id), notice: '編集を保存しました'
     else
-      @tag_list = post.tags.pluck(:tag_name).join(',')
+      @tag_list = @post.tags.pluck(:tag_name).join(',')
       render :edit
     end
   end

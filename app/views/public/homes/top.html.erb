@@ -26,9 +26,9 @@
             <% end %>
           </div>
           <%= image_tag post.get_post_image, class: "card-img-top" %>
-          <div class="card-body-top">
+          <div class="card-body">
             <%= link_to post_path(post.id), class: "text-dark" do %>
-              <strong><%= post.post_name %></strong>
+              <h5 class="font-weight-bold"><%= post.post_name %></h5>
               <p><%= post.introduction.truncate(40) %></p>
             <% end %>
           </div>
