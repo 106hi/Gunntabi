@@ -1,0 +1,10 @@
+<% tag_list.each do |list| %>
+  <% if list.posts.count > 0 %>
+    <%= link_to tag_posts_path(tag_id: list.id), style: 'color: maroon;' do %>
+      <i class="fa-solid fa-hashtag"></i><%= list.tag_name %>
+    <% end %>
+    <div class="mr-2">
+      <%= "(#{list.posts.count})" %>
+    </div>
+  <% end %>
+<% end %>

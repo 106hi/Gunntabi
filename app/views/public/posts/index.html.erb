@@ -6,20 +6,9 @@
       <h3>投稿一覧</h3>
     <% end %>
   </div>
-  <div class="row mt-3 mb-1">
-    <h5>タグリスト</h5>
-  </div>
-  <div class="row mb-3">
-    <% @tag_list.each do |list| %>
-      <% if list.posts.count > 0 %>
-        <%= link_to tag_posts_path(tag_id: list.id), style: 'color: maroon;' do %>
-          <i class="fa-solid fa-hashtag"></i><%= list.tag_name %>
-        <% end %>
-        <div class="mr-2">
-          <%= "(#{list.posts.count})" %>
-        </div>
-      <% end %>
-    <% end %>
+  <h5 class="row mt-3">タグリスト</h5>
+  <div class="row mb-4">
+    <%= render "public/posts/tag_list", tag_list: @tag_list %>
   </div>
 </div>
 <div class="row mx-1">
