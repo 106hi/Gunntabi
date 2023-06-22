@@ -4,7 +4,7 @@
       <span style="background-color: #f2f2f2; font-size: 23px;">投稿編集</span>
     </div>
   </div>
-  <%= form_with model: @post do |f| %>
+  <%= form_with model: @post, local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
       <div class="col-md-2 px-md-0 offset-md-1 my-3">

@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!, except: %i[index show tag_search search]
-  before_action :authorize_customer, only: %i[edit update]
+  before_action :authorize_customer, only: %i[edit]
 
   def new
     @post = Post.new
@@ -63,6 +63,7 @@ class Public::PostsController < ApplicationController
       post.save_tag(tag_list)
       redirect_to post_path(post.id), notice: '編集を保存しました'
     else
+      @tag_list = post.tags.pluck(:tag_name).join(',')
       render :edit
     end
   end
