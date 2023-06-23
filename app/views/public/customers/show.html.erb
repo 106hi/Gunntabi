@@ -26,7 +26,11 @@
     <% end %>
   </div>
   <div>
-    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: 'border-radius:15px' %>
+    <% if @customer == current_customer && @customer.email = "guest@example.com" %>
+      <%= text_area_tag :profile, "会員登録すると投稿やコメント、投稿へのいいねなど使える機能が増えます。", size: "55x10", style: "border-radius:15px" %>
+    <% else %>
+      <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: "border-radius:15px" %>
+    <% end %>
   </div>
   <h3 class="mt-4 ml-5">投稿</h3>
   <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>

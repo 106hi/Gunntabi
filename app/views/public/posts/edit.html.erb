@@ -8,7 +8,7 @@
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
       <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :img, "画像" %>
+        <%= f.label :image, "画像" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.file_field :image, accept: "image/*" %>
@@ -36,7 +36,7 @@
       </div>
       <div class="col-md-9 px-md-0 my-3">
         <!--value: @tag_listでフォームに元の情報を入れて出力-->
-        <%= f.text_field :tag_name, value: @tag_list, class: "form-control" %>
+        <%= f.text_field :tag_name, value: @tag_list, class: "form-control" %><br>
         ※「,（カンマ）」を入れることでタグを複数作成できます。<br>
         （例）群馬,旅,グンマ
       </div>
