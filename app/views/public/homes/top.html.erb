@@ -36,7 +36,9 @@
             <p id="favorite-btn<%= post.id %>" class="ml-5">
               <%= render "public/favorites/favorite-btn", post: post %>
             </p>
-            <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
+            <p class="ml-5">
+              <i class="fa-solid fa-comment-dots"> <%= render "public/post_comments/counter", post: post %></i>
+            </p>
           </div>
         </div>
       <% end %>

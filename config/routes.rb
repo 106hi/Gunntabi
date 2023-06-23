@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     get "search" => "posts#search"
     resources :customers, only: %i[show edit update destroy]
-    resources :posts, only: %i[index show]
+    resources :posts, only: %i[index show destroy]
     resources :post_comments, only: %i[index destroy]
   end
 

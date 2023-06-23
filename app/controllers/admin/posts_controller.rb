@@ -12,6 +12,12 @@ class Admin::PostsController < ApplicationController
     @posts = @customer.posts
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to admin_posts_path, alert: '投稿を削除しました'
+  end
+
   def search
     @posts = Post.search(params[:keyword])
     @keyword = params[:keyword]

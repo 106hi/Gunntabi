@@ -35,7 +35,7 @@
   </div>
   <div class="row mb-4 ml-md-1">
     <div class="col-10 ml-md-5 ml-4">
-      <h4>コメント</h4>
+      <h4>コメント（全<%= render "public/post_comments/counter", post: @post %>件）</h4>
       <% if customer_signed_in? %>
         <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
       <% end %>
