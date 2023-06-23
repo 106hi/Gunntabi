@@ -86,3 +86,10 @@ body {
 .post-accessory {
   display: inline-flex;
 }
+
+.post-show-img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  position: center;
+}

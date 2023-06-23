@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-md-8">
-    <h3><%= @customer.nickname %>さんの詳細</h3>
-    <%= link_to "会員情報を編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success ml-2 mb-3' %>
-    <%= link_to "退会させる", admin_customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会させますか？"}, class: 'btn btn-danger ml-2 mb-3' %>
-    <table class="table table-bordered">
+    <div class="col-12">
+      <h3><%= @customer.nickname %>さんの詳細</h3>
+    </div>
+    <div class="row my-3 ml-3">
+      <%= link_to "会員情報を編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success ml-2 mb-3' %>
+      <%= link_to "退会させる", admin_customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会させますか？"}, class: 'btn btn-danger ml-2 mb-3' %>
+    </div>
+    <table class="table table-hover table-bordered">
       <tr>
         <th>会員ID</th>
         <td><%= @customer.id %></td>
@@ -24,11 +27,9 @@
         <td><%= @posts.count %>件</td>
       </tr>
     </table>
-    </div>
   </div>
-  </div>
-  <h3 class="ml-5">投稿</h3>
-  <div class="row mx-2">
+  <h3 class="row ml-5 pl-5">投稿</h3>
+  <div class="row mx-5">
     <%= render "admin/posts/admin_post_card", posts: @posts %>
   </div>
 </div>

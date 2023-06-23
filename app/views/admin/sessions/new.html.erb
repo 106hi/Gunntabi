@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 px-sm-0 offset-sm-1 mt-3">
+    <div class="col-sm-10 offset-sm-1 mt-3">
       <span style="background-color: #f2f2f2; font-size: 23px;">管理者ログイン</span>
     </div>
   </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
-      <div class="col-sm-2 px-sm-0 offset-sm-1 my-3">
+    <div class="row my-5">
+      <div class="col-lg-2 col-md-3 col-sm-4 offset-sm-1">
         <%= f.label :email, "メールアドレス" %>
       </div>
-      <div class="col-sm-3 px-sm-0 my-3">
-        <%= f.text_field :email, :size => "30", autofocus: true %>
+      <div class="col-sm-5">
+        <%= f.text_field :email, size: "30", autofocus: true %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-2 px-sm-0 offset-sm-1">
+    <div class="row my-3">
+      <div class="col-lg-2 col-md-3 col-sm-4 offset-sm-1">
         <%= f.label :password, "パスワード" %>
       </div>
-      <div class="col-sm-3 px-sm-0">
-        <%= f.password_field :password, :size => "30" %>
+      <div class="col-sm-5">
+        <%= f.password_field :password, size: "30" %>
       </div>
     </div>
     <div class="row">
@@ -27,9 +27,10 @@
       </div>
     </div>
   <% end %>
-  <div class="row my-3">
-    <div class="col-sm-4 px-sm-0 offset-sm-1">
-      <%= render "admin/shared/links" %>
+  <div class="row mt-2">
+    <div class="col-sm-8 offset-sm-1">
+      <span style="background-color: #f2f2f2; font-size: 20px;">会員の方</span><br>
+      <div class="ml-4 mt-3"><%= link_to "こちら", new_customer_session_path %>からログインしてください。</div>
     </div>
   </div>
 </div>

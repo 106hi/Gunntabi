@@ -1,7 +1,7 @@
 <div id="comments-error"></div>
 <div>
   <%= form_with model:[post, post_comment] do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに", size: "40x5", style: 'border-radius:15px' %>
+    <%= f.text_area :comment, placeholder: "コメントをここに", size: "42x5", style: 'border-radius:15px' %><br>
     <%= f.submit "送信" %>
   <% end %>
 </div>
