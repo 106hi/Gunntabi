@@ -2,10 +2,14 @@
   <div class="row">
     <div class="col-11 mt-3 ml-5">
       <% if @customer == current_customer %>
-        <div class="mb-2"><%= image_tag @customer.get_image, class: "customer-img rounded-circle mx-3", size: "100x100" %></div>
+        <div class="mb-2">
+          <%= image_tag @customer.get_image, class: "customer-img rounded-circle mx-3", size: "100x100" %>
+        </div>
         <h3>マイページ</h3>
       <% else %>
-        <div class="mb-2"><%= image_tag @customer.get_image, class: "customer-img rounded-circle mx-3", size: "100x100" %></div>
+        <div class="mb-2">
+          <%= image_tag @customer.get_image, class: "customer-img rounded-circle mx-3", size: "100x100" %>
+        </div>
         <h3><%= @customer.nickname %></h3>
       <% end %>
     </div>
@@ -27,7 +31,6 @@
   <h3 class="mt-4 ml-5">投稿</h3>
   <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
   <div class="row">
-    <div class="col-3">
     <% @posts.each do |post| %>
       <div class="card border ml-4 mb-2" style="width: 280px;">
         <%= image_tag post.get_post_image, class: "card-img" %>
@@ -48,6 +51,5 @@
         </div>
       </div>
     <% end %>
-    </div>
   </div>
 </div>

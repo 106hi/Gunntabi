@@ -3,16 +3,16 @@
     <div class="col-lg-9 mb-2">
       <div class="box">
         <%= image_tag 'gunnma_green.png' %>
-        <p class="north_area"><%= link_to posts_path(area: 1), style: 'color: maroon;' do %> 北毛エリア <% end %></p>
+        <p class="north_area"><%= link_to posts_path(area: 1), style: 'color: darkorange;' do %> 北毛エリア <% end %></p>
         <p class="central_area"><%= link_to posts_path(area: 2), style: 'color: maroon;' do %> 中毛エリア <% end %></p>
-        <p class="west_area"><%= link_to posts_path(area: 3), style: 'color: maroon;' do %> 西毛エリア <% end %></p>
-        <p class="east_area"><%= link_to posts_path(area: 4), style: 'color: maroon;' do %> 東毛エリア <% end %></p>
+        <p class="west_area"><%= link_to posts_path(area: 3), style: 'color: fuchsia;' do %> 西毛エリア <% end %></p>
+        <p class="east_area"><%= link_to posts_path(area: 4), style: 'color: blue;' do %> 東毛エリア <% end %></p>
       </div>
       <strong class="area_detail">
-        北毛エリア：利根郡、吾妻郡、沼田市<br>
-        中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡<br>
-        西毛エリア：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡<br>
-        東毛エリア：桐生市、太田市、館林市、みどり市、邑楽郡
+        <%= link_to posts_path(area: 1), style: 'color: darkorange;' do %> 北毛エリア <% end %>：利根郡、吾妻郡、沼田市<br>
+        <%= link_to posts_path(area: 2), style: 'color: maroon;' do %> 中毛エリア <% end %>：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡<br>
+        <%= link_to posts_path(area: 3), style: 'color: fuchsia;' do %> 西毛エリア <% end %>：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡<br>
+        <%= link_to posts_path(area: 4), style: 'color: blue;' do %> 東毛エリア <% end %>：桐生市、太田市、館林市、みどり市、邑楽郡
       </strong>
     </div>
     <div class="col-lg-3">
@@ -40,19 +40,6 @@
           </div>
         </div>
       <% end %>
-
-
-
-<!--      <table class="table">-->
-<!--        <tr>-->
-<!--          <td rowspan="2"><%#= image_tag post.get_post_image, size: "100x100" %></td>-->
-<!--          <td><#%= post.post_name %></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>投稿者：<%#= post.customer.nickname %></td>-->
-<!--        </tr>-->
-<!--      </table>-->
-<!--      <%# end %>-->
     </div>
   </div>
 </div>
