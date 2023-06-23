@@ -25,8 +25,8 @@
       <%= link_to "退会する", customer_path(@customer.id), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger mb-4' %>
     <% end %>
   </div>
-  <div class="ml-5">
-    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "50x5", style: 'border-radius:15px' %>
+  <div>
+    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: 'border-radius:15px' %>
   </div>
   <h3 class="mt-4 ml-5">投稿</h3>
   <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>

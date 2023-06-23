@@ -17,10 +17,14 @@ ja:
         email: "メールアドレス"
         phone_number: "電話番号"
         password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+        profile: "プロフィール文"
       post:
         post_name: "スポット名"
         introduction: "おすすめポイント"
         address: "住所"
+      admin:
+        email: "メールアドレス"
   devise:
     confirmations:
       confirmed: "アカウントを登録しました。"

@@ -4,8 +4,8 @@
       <i class="fa-solid fa-location-dot"></i> <%= @post.post_name %>
     </h3>
     <div id="favorite-btn<%= @post.id %>", class="post-accessory col-lg-1 mt-lg-4 ml-5">
-        <%= render "public/favorites/favorite-btn", post: @post %>
-      </div>
+      <%= render "public/favorites/favorite-btn", post: @post %>
+    </div>
     <div class="col-lg-3 my-3">
       <% if @post.customer == current_customer %>
         <%= link_to "編集", edit_post_path(@post.id), class: 'btn btn-success ml-5' %>
@@ -16,10 +16,6 @@
   <div class="row mb-4 ml-5">
     <%= render "public/posts/tag_list", tag_list: @post_tags %>
   </div>
-
-
-
-
   <div class="row my-3">
     <div class="col-lg-8">
     <%= image_tag @post.customer.get_image, class: "customer-img rounded-circle mx-2 mb-2", size: "30x30" %>

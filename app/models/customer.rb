@@ -11,9 +11,10 @@ class Customer < ApplicationRecord
 
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :nickname, presence: true
-  validates :email, presence: true
+  validates :nickname, presence: true, length: {maximum: 20}
+  validates :email, presence: true, uniqueness: true
   validates :phone_number, presence: true
+  validates :profile, length: {maximum: 300}
 
   def get_image
     unless image.attached?

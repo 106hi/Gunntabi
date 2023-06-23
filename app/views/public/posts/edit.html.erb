@@ -5,7 +5,7 @@
     </div>
   </div>
   <%= form_with model: @post, local: true do |f| %>
-    <%= render 'layouts/error_messages', model: @post %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
       <div class="col-md-2 px-md-0 offset-md-1 my-3">
         <%= f.label :img, "画像" %>
@@ -27,7 +27,7 @@
         <%= f.label :introduction, "おすすめポイント" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
-        <%= f.text_area :introduction, size: "55x7", style: 'border-radius:15px' %>
+        <%= f.text_area :introduction, size: "55x10", style: 'border-radius:15px' %>
       </div>
     </div>
     <div class="row">
