@@ -1,11 +1,10 @@
 <% post_comments.each do |post_comment| %>
   <div class="mx-4">
     <div class="my-2">
-      <i class="fa-solid fa-location-dot"></i> <%= post_comment.post.post_name.truncate(25) %>
-    </div>
-    <div class="my-2">
-      <%= image_tag post_comment.customer.get_image, class: "customer-img rounded-circle mr-1", size: "30x30" %>
-      <%= post_comment.customer.nickname %>
+      <%= link_to admin_customer_path(post_comment.customer.id), class: "text-dark" do %>
+        <%= image_tag post_comment.customer.get_image, class: "customer-img rounded-circle mr-1", size: "30x30" %>
+        <%= post_comment.customer.nickname %>
+      <% end %>
     </div>
     <div>
       <%= text_area_tag post_comment.comment, post_comment.comment, size: "45x5", style: "border-radius:15px" %>

@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   validates :first_name, presence: true
   validates :nickname, presence: true, length: {maximum: 20}
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: {with: /\A0\d{9,10}\z/}
   validates :profile, length: {maximum: 300}
 
   def get_image

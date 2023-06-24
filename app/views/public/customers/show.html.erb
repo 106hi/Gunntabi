@@ -26,18 +26,16 @@
     <% end %>
   </div>
   <div>
-    <% if @customer == current_customer && @customer.email = "guest@example.com" %>
-      <%= text_area_tag :profile, "会員登録すると投稿やコメント、投稿へのいいねなど使える機能が増えます。", size: "55x10", style: "border-radius:15px" %>
-    <% else %>
-      <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: "border-radius:15px" %>
-    <% end %>
+    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: "border-radius:15px" %>
   </div>
   <h3 class="mt-4 ml-5">投稿</h3>
   <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
   <div class="row">
     <% @posts.each do |post| %>
       <div class="card border ml-4 mb-2" style="width: 280px;">
-        <%= image_tag post.get_post_image, class: "card-img" %>
+        <%= link_to post_path(post.id), class: "text-dark" do %>
+          <%= image_tag post.get_post_image, class: "card-img" %>
+        <% end %>
         <div class="card-body">
           <%= link_to post_path(post.id), class: "text-dark" do %>
             <h4><%= post.post_name %></h4>
@@ -48,7 +46,9 @@
           <p id="favorite-btn<%= post.id %>" class="ml-5">
             <%= render "public/favorites/favorite-btn", post: post %>
           </p>
-          <p class="ml-5"><%= render "public/post_comments/counter", post: post %></p>
+          <p class="ml-5">
+            <i class="fa-solid fa-comment-dots"> <%= render "public/post_comments/counter", post: post %></i>
+          </p>
         </div>
         <div class="card-footer text-muted">
           投稿日 : <%= post.created_at.strftime('%Y/%m/%d') %>

@@ -10,6 +10,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @customer = @post.customer
     @posts = @customer.posts
+    @post_comments = @post.post_comments
   end
 
   def destroy

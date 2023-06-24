@@ -30,6 +30,29 @@
   </div>
   <h3 class="row ml-5 pl-5">投稿</h3>
   <div class="row mx-xl-5 mx-md-2 mx-5">
-    <%= render "admin/posts/admin_post_card", posts: @posts %>
+    <% @posts.each do |post| %>
+      <div class="card border ml-4 mb-4" style="width: 280px;">
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.get_post_image, class: "card-img" %>
+        <% end %>
+        <div class="card-body">
+          <%= link_to admin_post_path(post.id), class: "text-dark" do %>
+            <h4><%= post.post_name %></h4>
+            <p><%= post.introduction.truncate(40) %></p>
+          <% end %>
+        </div>
+        <div class="card-text">
+          <p id="favorite-btn<%= post.id %>" class="ml-5">
+            <%= render "public/favorites/favorite-btn", post: post %>
+          </p>
+          <p class="ml-5">
+            <i class="fa-solid fa-comment-dots"> <%= render "public/post_comments/counter", post: post %></i>
+          </p>
+        </div>
+        <div class="card-footer text-muted">
+          投稿日 : <%= post.created_at.strftime('%Y/%m/%d') %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

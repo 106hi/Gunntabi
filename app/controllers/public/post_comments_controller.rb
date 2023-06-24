@@ -5,11 +5,12 @@ class Public::PostCommentsController < ApplicationController
     @comment = current_customer.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      # flash.now[:notice] = 'コメントを投稿しました'
+      #flash.now[:notice] = 'コメントを投稿しました'
       # redirect_to post_path(@post)
-      redirect_to post_path(@post), notice: 'コメントを投稿しました'
+      #redirect_to post_path(@post), notice: 'コメントを投稿しました'
     else
-      render 'public/posts/show'
+      flash[:alert] = "コメントを入力してください."
+      redirect_to post_path(@post.id)
     end
   end
 

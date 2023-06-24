@@ -18,8 +18,10 @@
   </div>
   <div class="row my-3">
     <div class="col-lg-11 ml-lg-5 p-0">
-      <%= image_tag @post.customer.get_image, class: "customer-img rounded-circle mx-2 mb-2", size: "30x30" %>
-      <%= @post.customer.nickname %><br>
+      <%= link_to customer_path(@post.customer.id), class: "text-dark" do %>
+        <%= image_tag @post.customer.get_image, class: "customer-img rounded-circle mx-2 mb-2", size: "30x30" %>
+        <%= @post.customer.nickname %>
+      <% end %>
       <%= image_tag @post.get_post_image, size: "600x500", class: "post-show-img" %>
       <h5 class="mt-3 ml-3">おすすめポイント:</h5>
       <div class="mx-3">
@@ -35,9 +37,11 @@
   </div>
   <div class="row mb-4 ml-md-1">
     <div class="col-10 ml-md-5 ml-4">
-      <h4>コメント（全<%= render "public/post_comments/counter", post: @post %>件）</h4>
+      <h4>コメント</h4>
       <% if customer_signed_in? %>
+      <div>
         <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+        </div>
       <% end %>
     </div>
   </div>

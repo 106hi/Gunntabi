@@ -1,14 +1,16 @@
 <% posts.each do |post| %>
   <div class="card border ml-4 mb-4" style="width: 280px;">
     <div class="card-header">
-      <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-3", size: "30x30" %>
       <%= link_to admin_customer_path(post.customer.id), class: "text-dark" do %>
+        <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-3", size: "30x30" %>
         <%= post.customer.nickname %>
       <% end %>
     </div>
-    <%= image_tag post.get_post_image, class: "card-img" %>
+    <%= link_to admin_post_path(post.id) do %>
+      <%= image_tag post.get_post_image, class: "card-img" %>
+    <% end %>
     <div class="card-body">
-      <%= link_to admin_post_path(post.id), class: "text-dark" do %>
+      <%= link_to admin_post_path(post.id) do %>
         <h4><%= post.post_name %></h4>
         <p><%= post.introduction.truncate(40) %></p>
       <% end %>

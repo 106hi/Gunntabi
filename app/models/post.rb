@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :tag_maps
 
   validates :post_name, presence: true, length: {maximum: 50}
-  validates :introduction, presence: true, length: {maximum: 500}
+  validates :introduction, presence: true, length: {maximum: 400}
   validates :address, presence: true
 
   enum area: {north_area:1, central_area:2, west_area:3, east_area:4}

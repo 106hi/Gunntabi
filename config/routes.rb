@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get "search" => "posts#search"
     resources :customers, only: %i[show edit update destroy]
     resources :posts, only: %i[index show destroy]
-    resources :post_comments, only: %i[index destroy]
+    resources :post_comments, only: %i[destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
