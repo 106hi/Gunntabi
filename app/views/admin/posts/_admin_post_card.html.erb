@@ -10,7 +10,7 @@
       <%= image_tag post.get_post_image, class: "card-img" %>
     <% end %>
     <div class="card-body">
-      <%= link_to admin_post_path(post.id) do %>
+      <%= link_to admin_post_path(post.id), class: "text-dark" do %>
         <h4><%= post.post_name %></h4>
         <p><%= post.introduction.truncate(40) %></p>
       <% end %>

@@ -20,12 +20,14 @@
       <% @posts.each do |post| %>
         <div class="card border ml-4 mb-2" style="width: 250px;">
           <div class="card-header py-1">
-            <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-1", size: "25x25" %>
             <%= link_to customer_path(post.customer.id), class: "text-dark" do %>
+              <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-1", size: "25x25" %>
               <%= post.customer.nickname %>
             <% end %>
           </div>
-          <%= image_tag post.get_post_image, class: "card-img-top" %>
+          <%= link_to post_path(post.id), class: "text-dark" do %>
+            <%= image_tag post.get_post_image, class: "card-img-top" %>
+          <% end %>
           <div class="card-body">
             <%= link_to post_path(post.id), class: "text-dark" do %>
               <h5 class="font-weight-bold"><%= post.post_name %></h5>

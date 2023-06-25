@@ -20,7 +20,7 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     post_comment = PostComment.find(params[:id])
     post_comment.destroy
-    flash.now[:alert] = '投稿を削除しました'
+    flash.now[:alert] = 'コメントを削除しました'
     #renderしたときに@postのデータがないので@postを定義
     # @post = Post.find(params[:post_id])
     render :destroy  #render先にjsファイルを指定

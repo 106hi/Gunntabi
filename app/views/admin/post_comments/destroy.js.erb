@@ -1,1 +1,2 @@
 $('.post-comments').html("<%= j(render 'admin/post_comments/comments', post_comments: @post_comments) %>");
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");
