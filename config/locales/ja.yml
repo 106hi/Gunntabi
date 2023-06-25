@@ -23,6 +23,8 @@ ja:
         post_name: "スポット名"
         introduction: "おすすめポイント"
         address: "住所"
+      post_comment:
+        comment: "コメント"
       admin:
         email: "メールアドレス"
   devise:
