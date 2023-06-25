@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-sm-8 px-sm-0 mb-3 offset-sm-1">
-      <h3><%= @customer.nickname %>さんの会員情報編集</h3>
+      <span style="background-color: #f2f2f2; font-size: 23px;"><%= @customer.nickname %>さんの会員情報編集</span>
+      <div class="mt-2">
+        <require>*</require> が付いている項目は<require>入力必須</require>です。
+      </div>
     </div>
   </div>
   <%= form_with model: @customer, url:admin_customer_path(@customer.id), local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+      <div class="col-md-3 px-md-0 offset-md-1 my-3">
         <%= f.label "会員ID" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
@@ -15,44 +18,44 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+      <div class="col-md-3 px-md-0 offset-md-1 my-3">
         <%= f.label "名前" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
-        <%= f.label :last_name, "(姓)" %>
+        <%= f.label :last_name, "(姓)" %> <require>*</require>
         <%= f.text_field :last_name, size: "25" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
-        <%= f.label :first_name, "(名)" %>
+        <%= f.label :first_name, "(名)" %> <require>*</require>
         <%= f.text_field :first_name, size: "25" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :nickname, "ニックネーム" %>
+      <div class="col-md-3 px-md-0 offset-md-1 my-3">
+        <%= f.label :nickname, "ニックネーム(20文字以内)" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.text_field :nickname, size: "40" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :email, "メールアドレス" %>
+      <div class="col-md-3 px-md-0 offset-md-1 my-3">
+        <%= f.label :email, "メールアドレス" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :phone_number, "電話番号" %>
+      <div class="col-md-3 px-md-0 offset-md-1 my-3">
+        <%= f.label :phone_number, "電話番号(ハイフンなし)" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.text_field :phone_number, size: "30" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 offset-md-3">
+      <div class="col-md-2 offset-md-4 mt-3">
         <%= f.submit "変更を保存", class: 'btn btn-success' %>
       </div>
     </div>

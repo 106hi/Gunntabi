@@ -2,12 +2,15 @@
   <div class="row my-3">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
       <span style="background-color: #f2f2f2; font-size: 23px;">投稿編集</span>
+      <div class="mt-2">
+        <require>*</require> が付いている項目は<require>入力必須</require>です。
+      </div>
     </div>
   </div>
   <%= form_with model: @post, local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
         <%= f.label :image, "画像" %>
       </div>
       <div class="col-md-4 px-md-0 my-3">
@@ -15,26 +18,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :post_name, "スポット名" %>
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :post_name, "スポット名(50文字以内)" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.text_field :post_name, size: "55" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :introduction, "おすすめポイント" %>
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :introduction, "おすすめポイント(400文字以内)" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.text_area :introduction, size: "55x10", style: 'border-radius:15px' %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
         <%= f.label :tag_name, "タグ" %>
       </div>
-      <div class="col-md-9 px-md-0 my-3">
+      <div class="col-12 col-lg-7 col-md-8 px-md-0 my-3">
         <!--value: @tag_listでフォームに元の情報を入れて出力-->
         <%= f.text_field :tag_name, value: @tag_list, class: "form-control" %><br>
         ※「,（カンマ）」を入れることでタグを複数作成できます。<br>
@@ -42,23 +45,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
-        <%= f.label :address, "住所" %>
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :address, "住所" %> <require>*</require>
       </div>
       <div class="col-md-4 px-md-0 my-3">
         <%= f.text_field :address, :size => "55" %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 px-md-0 offset-md-1 my-3">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
         <%= f.label :area, "エリア" %>
       </div>
-      <div class="col-md-4 px-md-0 my-3">
-        <%= f.select :area, Post.areas_i18n.invert, include_blank: "選択してください" %>
+      <div class="col-12 col-lg-7 col-md-8 px-md-0 my-3">
+        <%= f.select :area, Post.areas_i18n.invert, include_blank: "選択してください" %><br>
+        北毛エリア：利根郡、吾妻郡、沼田市<br>
+        中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡<br>
+        西毛エリア：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡<br>
+        東毛エリア：桐生市、太田市、館林市、みどり市、邑楽郡<br>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 offset-md-3">
+      <div class="col-md-2 offset-md-5">
         <%= f.submit "変更を保存", class: "btn btn-success px-4 mt-3 mb-5" %>
       </div>
     </div>
