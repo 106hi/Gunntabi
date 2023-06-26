@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def show

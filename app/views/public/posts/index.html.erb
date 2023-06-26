@@ -10,7 +10,8 @@
   <div class="row mb-4 ml-5">
     <%= render "public/posts/tag_list", tag_list: @tag_list %>
   </div>
-  <div class="row mx-2">
+  <div class="row offset-xl-1 mx-2">
     <%= render "public/posts/post_card", posts: @posts %>
   </div>
+  <%= paginate @posts %>
 </div>

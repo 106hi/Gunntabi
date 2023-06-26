@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.order(created_at: :desc)
+    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def edit
@@ -34,7 +34,7 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    @favorite_posts = Post.find(favorites).page(params[:page]).per(15)
   end
 
   def guest_sign_in

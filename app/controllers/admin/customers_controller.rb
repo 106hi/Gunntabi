@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.order(created_at: :desc)
+    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def edit

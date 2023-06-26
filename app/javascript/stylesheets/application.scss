@@ -21,6 +21,7 @@ body {
   img{
     width: 100%;
   }
+  // 以下４つはtopページの画像上の文字の位置を指定
   .north_area {
     position: absolute;
     top: 10%;
@@ -111,4 +112,35 @@ footer {
   text-align: center;
   line-height: 100px;
   background-color: #9a7773;
+}
+
+// ページネーション
+.pagination {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  justify-content: center;
+
+  a {
+    margin: 0 5px;
+    border: none;
+    color: #999;
+    background-color: initial;
+    // マウスオーバー時の設定
+    &:hover {
+      border-radius: 50%;
+      background-color: #ffdead;
+      color: #999;
+    }
+  }
+  .page-link {
+    display: initial;
+  }
+  .page-item .page-link {
+    border-radius: 50%;
+  }
+  // 現在表示されているページの設定
+  .page-item.active .page-link {
+    background-color: #f4a460;
+  }
 }
