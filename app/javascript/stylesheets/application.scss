@@ -5,6 +5,9 @@ li {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: snow;
 }
 
@@ -101,4 +104,11 @@ body {
 
 require {
   color: red;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  line-height: 100px;
+  background-color: #9a7773;
 }
