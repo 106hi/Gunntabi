@@ -34,7 +34,11 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites).page(params[:page]).per(15)
+    if favorites.present?
+      @favorite_posts = Post.where(id: favorites).page(params[:page]).per(15)
+    else
+      @favorite_posts = []
+    end
   end
 
   def guest_sign_in
