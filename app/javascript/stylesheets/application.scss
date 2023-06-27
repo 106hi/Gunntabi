@@ -26,26 +26,48 @@ body {
     position: absolute;
     top: 10%;
     left: 24%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #ff8c00;
+    color: #fff;
   }
   .central_area {
     position: absolute;
     top: 52%;
     left: 40%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #56001d;
+    color: #fff;
   }
   .west_area {
     position: absolute;
     top: 73%;
     left: 0%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #d580b2;
+    color: #fff;
   }
   .east_area {
     position: absolute;
     top: 70%;
     left: 70%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #00f;
+    color: #fff;
   }
+}
+
+.btn:hover {
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .post_img {

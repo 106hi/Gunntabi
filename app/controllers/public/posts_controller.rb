@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.all
       # ページネーションの動作確認のためこのページのみ６件表示にしている
-      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(3)
+      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
     end
     @tag_list = Tag.all
   end
