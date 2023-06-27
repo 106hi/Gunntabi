@@ -20,7 +20,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(15)
     @keyword = params[:keyword]
     render "admin/posts/index"
   end
