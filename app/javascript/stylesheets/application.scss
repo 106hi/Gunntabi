@@ -139,8 +139,12 @@ footer {
   .page-item .page-link {
     border-radius: 50%;
   }
-  // 現在表示されているページの設定
+  // 現在表示されているページのページネーション設定
   .page-item.active .page-link {
     background-color: #f4a460;
+  }
+  // 投稿数が増え「...」が出た時のページネーション設定
+  .page-item.disabled .page-link {
+    background-color: initial;
   }
 }
