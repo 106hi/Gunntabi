@@ -26,7 +26,7 @@
     <% end %>
   </div>
   <div>
-    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: "border-radius:15px" %>
+    <%= text_area_tag @customer.profile, @customer.profile, placeholder: "プロフィール", size: "55x10", style: "border-radius:15px", readonly: true %>
   </div>
   <h3 class="mt-4 ml-5">投稿</h3>
   <div class="ml-5 mb-2">投稿数：<%= @posts.count %></div>
