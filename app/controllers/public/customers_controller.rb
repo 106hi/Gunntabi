@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(15)
+    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit
@@ -35,7 +35,7 @@ class Public::CustomersController < ApplicationController
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
     if favorites.present?
-      @favorite_posts = Post.where(id: favorites).page(params[:page]).per(15)
+      @favorite_posts = Post.where(id: favorites).page(params[:page]).per(6)
     else
       @favorite_posts = []
     end

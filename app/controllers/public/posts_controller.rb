@@ -11,11 +11,10 @@ class Public::PostsController < ApplicationController
     # エリアごとのリンクを押した時にエリアのページを開く
     if params[:area]
       @posts = Post.where(area: params[:area])
-      @posts = @posts.order(created_at: :desc).page(params[:page]).per(15)
+      @posts = @posts.order(created_at: :desc).page(params[:page]).per(6)
       @area_name = I18n.t("enums.post.area.#{Post.areas.invert[params[:area].to_i]}")
     else
       @posts = Post.all
-      # ページネーションの動作確認のためこのページのみ６件表示にしている
       @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
     end
     @tag_list = Tag.all
@@ -77,7 +76,7 @@ class Public::PostsController < ApplicationController
 
   def search
     @tag_list = Tag.all
-    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(15)
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(6)
     @keyword = params[:keyword]
     render "public/posts/index"
   end

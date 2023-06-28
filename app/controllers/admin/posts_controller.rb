@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(15)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
@@ -20,7 +20,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(15)
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(6)
     @keyword = params[:keyword]
     render "admin/posts/index"
   end
