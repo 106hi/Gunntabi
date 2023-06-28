@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   enum area: {north_area:1, central_area:2, west_area:3, east_area:4}
 
   def get_post_image
+    # 投稿画像がないときは元々用意していた画像が出る
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_scenery_gray.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image_scenery.jpg', content_type: 'image/jpeg')

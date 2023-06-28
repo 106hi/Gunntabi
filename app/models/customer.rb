@@ -13,10 +13,12 @@ class Customer < ApplicationRecord
   validates :first_name, presence: true
   validates :nickname, presence: true, length: {maximum: 20}
   validates :email, presence: true, uniqueness: true
+  # 電話番号は0から始まる10〜11桁の半角数字
   validates :phone_number, presence: true, format: {with: /\A0\d{9,10}\z/}
   validates :profile, length: {maximum: 300}
 
   def get_image
+    # プロフィール画像がないときは元々用意していた画像が出る
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')

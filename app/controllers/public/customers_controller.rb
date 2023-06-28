@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_customer, only: [:edit]
 
   def index
+    # 新規登録失敗時に画面をリロードすると新規登録画面に遷移する
     redirect_to new_customer_registration_path
   end
 
@@ -37,6 +38,7 @@ class Public::CustomersController < ApplicationController
     if favorites.present?
       @favorite_posts = Post.where(id: favorites).page(params[:page]).per(6)
     else
+      # いいねした投稿がなかった時何も表示しない
       @favorite_posts = []
     end
   end

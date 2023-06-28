@@ -14,7 +14,6 @@ class Public::PostsController < ApplicationController
       @posts = @posts.order(created_at: :desc).page(params[:page]).per(6)
       @area_name = I18n.t("enums.post.area.#{Post.areas.invert[params[:area].to_i]}")
     else
-      @posts = Post.all
       @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
     end
     @tag_list = Tag.all
