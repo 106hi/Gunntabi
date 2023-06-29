@@ -5,5 +5,7 @@
   <div class="row mx-2">
     <%= render "public/posts/post_card", posts: @favorite_posts %>
   </div>
-  <%= paginate @favorite_posts %>
+  <% unless @favorite_posts %>
+    <%= paginate @favorite_posts %>
+  <% end %>
 </div>
