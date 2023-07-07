@@ -6,12 +6,17 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-  enum area: {"---":0, north_area:1, central_area:2, west_area:3, east_area:4}
+  validates :post_name, presence: true, length: {maximum: 50}
+  validates :introduction, presence: true, length: {maximum: 400}
+  validates :address, presence: true
+
+  enum area: {north_area:1, central_area:2, west_area:3, east_area:4}
 
   def get_post_image
+    # 投稿画像がないときは元々用意していた画像が出る
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image_scenery_gray.jpeg')
-      image.attach(io: File.open(file_path), filename: 'default-image_scenery.jpeg', content_type: 'image/jpeg')
+      file_path = Rails.root.join('app/assets/images/no_image_scenery_gray.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image_scenery.jpg', content_type: 'image/jpeg')
     end
     image
   end
@@ -36,5 +41,9 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(tag_name: new)
       self.tags << new_post_tag
     end
+  end
+
+  def self.search(keyword)
+    where(["post_name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
   end
 end

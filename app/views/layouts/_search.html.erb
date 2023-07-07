@@ -1,0 +1,17 @@
+<div class="search-form">
+  <% if admin_signed_in? %>
+    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: keyword, placeholder: "キーワードを入力" %>
+      <button type="submit" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    <% end %>
+  <% else %>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: keyword, placeholder: "キーワードを入力" %>
+      <button type="submit" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    <% end %>
+  <% end %>
+</div>

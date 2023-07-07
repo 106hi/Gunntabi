@@ -1,0 +1,30 @@
+<% posts.each do |post| %>
+  <div class="card border ml-4 mb-4" style="width: 280px;">
+    <div class="card-header">
+      <%= link_to admin_customer_path(post.customer.id), class: "text-dark" do %>
+        <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-3", size: "30x30" %>
+        <%= post.customer.nickname %>
+      <% end %>
+    </div>
+    <%= link_to admin_post_path(post.id) do %>
+      <%= image_tag post.get_post_image, class: "card-img" %>
+    <% end %>
+    <div class="card-body">
+      <%= link_to admin_post_path(post.id), class: "text-dark" do %>
+        <h4><%= post.post_name %></h4>
+        <p><%= post.introduction.truncate(40) %></p>
+      <% end %>
+    </div>
+    <div class="card-text">
+      <p id="favorite-btn<%= post.id %>" class="ml-5">
+        <%= render "public/favorites/favorite-btn", post: post %>
+      </p>
+      <p class="ml-5">
+        <i class="fa-solid fa-comment-dots"> <%= render "public/post_comments/counter", post: post %></i>
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+      投稿日 : <%= post.created_at.strftime('%Y/%m/%d') %>
+    </div>
+  </div>
+<% end %>

@@ -1,30 +1,48 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-7 mb-2">
+  <div class="row my-3">
+    <div class="col-lg-9 mb-2">
       <div class="box">
         <%= image_tag 'gunnma_green.png' %>
-        <p class="north_area"><%= link_to posts_path(area: 1) do %> 北毛エリア <% end %></p>
-        <p class="central_area"><%= link_to posts_path(area: 2) do %> 中毛エリア <% end %></p>
-        <p class="west_area"><%= link_to posts_path(area: 3) do %> 西毛エリア <% end %></p>
-        <p class="east_area"><%= link_to posts_path(area: 4) do %> 東毛エリア <% end %></p>
+        <%= link_to posts_path(area: 1), class: 'north_area btn' do %> 北毛エリア <% end %>
+        <%= link_to posts_path(area: 2), class: 'central_area btn' do %> 中毛エリア <% end %>
+        <%= link_to posts_path(area: 3), class: 'west_area btn' do %> 西毛エリア <% end %>
+        <%= link_to posts_path(area: 4), class: 'east_area btn' do %> 東毛エリア <% end %>
       </div>
-      <div>北毛エリア：利根郡、吾妻郡、沼田市</div>
-      <div>中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡</div>
-      <div>西毛エリア：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡</div>
-      <div>東毛エリア：桐生市、太田市、館林市、みどり市、邑楽郡</div>
+      <strong class="area_detail">
+        <%= link_to posts_path(area: 1), style: 'color: #ff8c00;' do %> 北毛エリア <% end %>：利根郡、吾妻郡、沼田市<br>
+        <%= link_to posts_path(area: 2), style: 'color: #56001d;' do %> 中毛エリア <% end %>：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡<br>
+        <%= link_to posts_path(area: 3), style: 'color: #d580b2;' do %> 西毛エリア <% end %>：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡<br>
+        <%= link_to posts_path(area: 4), style: 'color: #00f;' do %> 東毛エリア <% end %>：桐生市、太田市、館林市、みどり市、邑楽郡
+      </strong>
     </div>
-    <div class="col-lg-5">
-      <h4>新しい投稿</h4>
+    <div class="col-lg-3">
+      <h4 class="ml-5">新しい投稿</h4>
       <% @posts.each do |post| %>
-      <table class="table">
-        <tr>
-          <td rowspan="2"><%= image_tag post.get_post_image, size: "100x100" %></td>
-          <td><%= post.post_name %></td>
-        </tr>
-        <tr>
-          <td>投稿者：<%= post.customer.nickname %></td>
-        </tr>
-      </table>
+        <div class="card border ml-4 mb-2" style="width: 250px;">
+          <div class="card-header py-1">
+            <%= link_to customer_path(post.customer.id), class: "text-dark" do %>
+              <%= image_tag post.customer.get_image, class: "customer-img rounded-circle mr-1", size: "25x25" %>
+              <%= post.customer.nickname %>
+            <% end %>
+          </div>
+          <%= link_to post_path(post.id), class: "text-dark" do %>
+            <%= image_tag post.get_post_image, class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <%= link_to post_path(post.id), class: "text-dark" do %>
+              <h5 class="font-weight-bold"><%= post.post_name %></h5>
+              <p><%= post.introduction.truncate(40) %></p>
+            <% end %>
+          </div>
+          <div class="card-text">
+            <p id="favorite-btn<%= post.id %>" class="ml-5">
+              <%= render "public/favorites/favorite-btn", post: post %>
+            </p>
+            <p class="ml-5">
+              <i class="fa-solid fa-comment-dots"> <%= render "public/post_comments/counter", post: post %></i>
+            </p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

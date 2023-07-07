@@ -1,11 +1,11 @@
 class Admin::PostCommentsController < ApplicationController
-  def index
-    @post_comments = PostComment.all
-  end
+  before_action :authenticate_admin!
 
   def destroy
-    @post_comments = PostComment.all
     post_comment = PostComment.find(params[:id])
+    @post_comments = PostComment.where(post_id: post_comment.post_id)
     post_comment.destroy
+    flash.now[:alert] = 'コメントを削除しました'
+    render :destroy
   end
 end

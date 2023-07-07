@@ -9,12 +9,31 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :nickname, presence: true, length: {maximum: 20}
+  validates :email, presence: true, uniqueness: true
+  # 電話番号は0から始まる10〜11桁の半角数字
+  validates :phone_number, presence: true, format: {with: /\A0\d{9,10}\z/}
+  validates :profile, length: {maximum: 300}
+
   def get_image
+    # プロフィール画像がないときは元々用意していた画像が出る
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
+  end
+
+  # ゲストログイン用
+  def self.guest
+    find_or_create_by!(
+      last_name: 'guest', first_name: 'customer', email: 'guest@example.com',
+      nickname: 'guest', phone_number: '01234567890'
+    ) do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+    end
   end
 
   def full_name

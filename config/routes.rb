@@ -21,26 +21,29 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    post 'guest_sign_in', to: 'customers#guest_sign_in'
     root to: "homes#top"
+    get "search" => "posts#search"
     resources :posts, only: %i[new index show edit create destroy update] do
       resource :favorites, only: %i[create destroy]
       resources :post_comments, only: %i[create destroy]
     end
-    resources :customers, only: %i[show edit update destroy] do
+    resources :customers, only: %i[index show edit update destroy] do
       member do
         get :favorites
       end
     end
     resources :tags do
-      get 'posts', to: 'posts#search'
+      get 'posts', to: 'posts#tag_search'
     end
   end
 
   namespace :admin do
     get "/" => "homes#top"
-    resources :customers, only: %i[show edit]
-    resources :posts, only: %i[show]
-    resources :post_comments, only: %i[index destroy]
+    get "search" => "posts#search"
+    resources :customers, only: %i[show edit update destroy]
+    resources :posts, only: %i[index show destroy]
+    resources :post_comments, only: %i[destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

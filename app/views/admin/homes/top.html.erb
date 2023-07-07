@@ -1,21 +1,31 @@
+<div class="container">
+  <div class="row my-3">
 <h3>会員一覧</h3>
+</div>
+<div class="row">
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>会員ID</th>
-      <th>名前</th>
-      <th>投稿数</th>
-      <th>ステータス</th>
+      <th style="width: 17%">会員ID</th>
+      <th style="width: 43%">名前</th>
+      <th style="width: 20%">投稿数</th>
+      <th style="width: 20%">登録日</th>
     </tr>
   </thead>
   <% @customers.each do |customer| %>
   <tbody>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= customer.nickname %></td>
+      <td>
+        <%= link_to admin_customer_path(customer.id) do %>
+          <%= customer.nickname %>
+        <% end %>
+      </td>
       <td><%= customer.posts.count %></td>
-      <td><%= customer.is_deleted %></td>
+      <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
+</div>
+</div>

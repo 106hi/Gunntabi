@@ -1,4 +1,10 @@
-<h1>コメント管理</h1>
-<div class="post-comments">
-  <%= render "admin/post_comments/comments", post_comments: @post_comments %>
+<div class="container">
+  <div class="row">
+    <h3 class="col my-3 ml-5">
+      コメント管理
+    </h3>
+  </div>
+  <div class="row ml-xl-5 ml-lg-4 ml-md-5 ml-2 post-comments">
+    <%= render "admin/post_comments/comments", post_comments: @post_comments %>
+  </div>
 </div>

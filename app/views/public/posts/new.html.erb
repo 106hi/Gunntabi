@@ -1,40 +1,72 @@
-<h3>新規投稿</h3>
-<%= form_with model: @post do |f| %>
-<table>
-  <tr>
-    <th><%= f.label :image, "画像" %></th>
-    <td><%= f.file_field :image, accept: "image/*" %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "スポット名" %></th>
-    <td><%= f.text_field :post_name %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "おすすめポイント" %></th>
-    <td><%= f.text_area :introduction %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "タグ" %></th>
-    <td><%= f.text_field :tag_name, placeholder: "群馬,旅,タグ" %></td>
-    <td>※「,（カンマ）」を入れることでタグを複数作成できます。</td>
-  </tr>
-  <tr>
-    <th><%= f.label "住所" %></th>
-    <td><%= f.text_field :address %></td>
-  </tr>
-  <tr>
-    <th><%= f.label "エリア" %></th>
-    <td><%= f.select :area, Post.areas_i18n.invert %></td>
-  </tr>
-  <!--<tr>-->
-  <!--  <th><%= f.label "公開設定" %></th>-->
-  <!--  <td>-->
-  <!--    <%= f.radio_button :is_release, false %>-->
-  <!--    <%= f.label :公開 %>-->
-  <!--    <%= f.radio_button :is_release, true %>-->
-  <!--    <%= f.label :非公開 %>-->
-  <!--  </td>-->
-  <!--</tr>-->
-</table>
-<%= f.submit "投稿", class: 'btn btn-success' %>
-<% end %>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <span style="background-color: #f2f2f2; font-size: 23px;">新規投稿</span>
+      <div class="mt-2">
+        <require>*</require> が付いている項目は<require>入力必須</require>です。
+      </div>
+    </div>
+  </div>
+  <%= form_with model: @post, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :image, "画像" %>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :post_name, "スポット名(50文字以内)" %> <require>*</require>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_field :post_name, size: "55" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :introduction, "おすすめポイント(400文字以内)" %> <require>*</require>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_area :introduction, size: "55x10", style: 'border-radius:15px' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :tag_name, "タグ" %>
+      </div>
+      <div class="col-12 col-lg-7 col-md-8 px-md-0 my-3">
+        <%= f.text_field :tag_name, placeholder: "群馬,旅,タグ", size: "55" %><br>
+        ※「,（カンマ）」を入れることでタグを複数作成できます。<br>
+        （例）群馬,旅,グンマ
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :address, "住所" %> <require>*</require>
+      </div>
+      <div class="col-md-4 px-md-0 my-3">
+        <%= f.text_field :address, size: "55" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-2 px-md-0 offset-md-1 my-3">
+        <%= f.label :area, "エリア" %>
+      </div>
+      <div class="col-12 col-lg-7 col-md-8 px-md-0 my-3">
+        <%= f.select :area, Post.areas_i18n.invert, include_blank: "選択してください" %><br>
+        北毛エリア：利根郡、吾妻郡、沼田市<br>
+        中毛エリア：前橋市、伊勢崎市、渋川市、北群馬郡、佐波郡<br>
+        西毛エリア：高崎市、藤岡市、富岡市、安中市、多野郡、甘楽郡<br>
+        東毛エリア：桐生市、太田市、館林市、みどり市、邑楽郡<br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 offset-md-5">
+        <%= f.submit "投稿", class: "btn btn-success px-4 mt-3 mb-5" %>
+      </div>
+    </div>
+  <% end %>
+</div>

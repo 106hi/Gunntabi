@@ -1,39 +1,91 @@
 @use '~bootstrap/scss/bootstrap';
 
+li {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: snow;
+}
+
+.area_detail {
+  font-size: 20px;
+}
+
 .box {
   position: relative;
 
   img{
     width: 100%;
   }
+  // 以下４つはtopページの画像上の文字の位置を指定
   .north_area {
     position: absolute;
     top: 10%;
     left: 24%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #ff8c00;
+    color: #fff;
   }
   .central_area {
     position: absolute;
     top: 52%;
-    left: 42%;
+    left: 40%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #56001d;
+    color: #fff;
   }
   .west_area {
     position: absolute;
     top: 73%;
     left: 0%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #d580b2;
+    color: #fff;
   }
   .east_area {
     position: absolute;
     top: 70%;
     left: 70%;
+    padding: 4px;
     font-size: 25px;
+    border-radius: 13px;
+    background-color: #00f;
+    color: #fff;
   }
+}
+
+.btn:hover {
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.post_img {
+  object-fit: cover;
 }
 
 .customer-img {
   object-fit: cover;
+}
+
+.card {
+  background-color: initial;
+}
+
+.card:hover {
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .card-img {
@@ -41,11 +93,80 @@
   object-fit: cover;
 }
 
+.card-body {
+  padding-bottom: inherit;
+}
+
 .card-text {
   display: inline-flex;
-  bottom: 3%;
+  margin: 0 0 0 auto;
+  height: 50px;
+  width: 200px;
+}
+
+.card-img-top {
+  height: 120px;
+  object-fit: cover;
 }
 
 .post-accessory {
   display: inline-flex;
+}
+
+.post-show-img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  position: center;
+}
+
+.comment-form {
+  border-radius: 15px;
+  background-color: aliceblue;
+}
+
+require {
+  color: red;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  line-height: 100px;
+  background-color: #9a7773;
+}
+
+// ページネーション
+.pagination {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  justify-content: center;
+
+  a {
+    margin: 0 5px;
+    border: none;
+    color: #999;
+    background-color: initial;
+    // マウスオーバー時の設定
+    &:hover {
+      border-radius: 50%;
+      background-color: #ffdead;
+      color: #999;
+    }
+  }
+  .page-link {
+    display: initial;
+  }
+  .page-item .page-link {
+    border-radius: 50%;
+  }
+  // 現在表示されているページのページネーション設定
+  .page-item.active .page-link {
+    background-color: #f4a460;
+  }
+  // 投稿数が増え「...」が出た時のページネーション設定
+  .page-item.disabled .page-link {
+    background-color: initial;
+  }
 }
