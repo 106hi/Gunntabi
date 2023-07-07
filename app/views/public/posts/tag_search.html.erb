@@ -11,4 +11,7 @@
   <div class="row mx-2">
     <%= render "public/posts/post_card", posts: @posts %>
   </div>
+  <% unless @posts %>
+    <%= paginate @posts %>
+  <% end %>
 </div>
