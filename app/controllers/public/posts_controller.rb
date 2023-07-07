@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_customer.posts.new(post_params)
-    tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tag_name].split(',').map{|tag| tag.strip.gsub('　','')}
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path, notice: '投稿に成功しました'
@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     # タグの編集&削除
-    tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tag_name].split(',').map{|tag| tag.strip.gsub('　','')}
     if @post.update(post_params)
       # post_idに紐付いていたタグを@oldに入れる
       old_relations = TagMap.where(post_id: @post.id)
